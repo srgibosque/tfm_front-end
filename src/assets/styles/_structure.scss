@@ -1,0 +1,31 @@
+@mixin center(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-component{
+  @include center();
+}
+
+.tabs-structure {
+  @include center();
+  flex-direction: row;
+  gap: 0;
+  padding: 0.25rem;
+  max-width: 40rem;
+}
+
+.tab-structure {
+  display: inline-flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.icon-tab-structure {
+  @include center();
+  height: 100%; 
+  padding: 0.875rem; 
+}

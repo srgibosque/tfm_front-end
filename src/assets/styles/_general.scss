@@ -1,0 +1,17 @@
+html{
+  background-color: $bg-color-default;
+  color: $text-color-default;
+}
+body{
+  margin: 1.25rem;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none; 
+}

@@ -1,0 +1,29 @@
+.rubik-regular {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tabs{
+  border-radius: 1.75rem;
+  background-color: $bg-color-light;
+}
+
+.tab{
+  border-radius: 1.5rem;
+  color: $text-color-light;
+}
+
+.active{
+  color: $text-color-default;
+  background-color: $primary-color-default;
+}
+
+.icon {
+  fill: $text-color-light; 
+}
+
+.icon-tab-structure.active .icon {
+  fill: $text-color-default; 
+}
