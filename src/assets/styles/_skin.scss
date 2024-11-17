@@ -1,29 +1,61 @@
-.rubik-regular {
-  font-family: "Rubik", sans-serif;
+@mixin rubik-font($size, $color, $weight) {
+  font: {
+    family: "Rubik", sans-serif;
+    size: $size;
+    style: normal;
+    weight: $weight;
+  }
+
   font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+  color: $color;
 }
 
-.tabs{
+.rubik-regular {
+  @include rubik-font(1rem, $text-color-default, 400);
+}
+
+.rubik-labels {
+  @include rubik-font(0.875rem, $text-color-light , 400);
+}
+
+.rubik-titles {
+  @include rubik-font(1.5rem, $text-color-default , 500);
+}
+
+.tabs {
   border-radius: 1.75rem;
   background-color: $bg-color-light;
 }
 
-.tab{
+.tab {
   border-radius: 1.5rem;
   color: $text-color-light;
 }
 
-.active{
+.active {
   color: $text-color-default;
   background-color: $primary-color-default;
 }
 
 .icon {
-  fill: $text-color-light; 
+  fill: $text-color-light;
 }
 
 .icon-tab-structure.active .icon {
-  fill: $text-color-default; 
+  fill: $text-color-default;
+}
+
+.input {
+  border: 1px solid $text-color-default;
+  border-radius: 2rem;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color-default;
+    outline: none; // Add this for better user experience
+  }
+
+  &::placeholder {
+    color: $text-color-light;
+  }
 }

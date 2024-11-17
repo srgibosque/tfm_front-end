@@ -1,1 +1,38 @@
-<p>register works!</p>
+<div>
+  <button (click)="toLogIn()">Log in</button>
+  <section class="form-and-title">
+    <h1 class="rubik-titles">Sign up</h1>
+    <form class="form" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <div class="form-control">
+        <label class="rubik-labels" for="name">Name</label>
+        <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter your name" />
+      </div>
+  
+      <div class="form-control">
+        <label class="rubik-labels" for="email">Email</label>
+        <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
+      </div>
+  
+      <div class="form-control">
+        <label class="rubik-labels" for="password">Password</label>
+        <input class="input input-structure" type="password" [formControl]="password" />
+      </div>
+  
+      <div class="form-control">
+        <label for="gender">Gender</label>
+        <select id="gender" formControlName="gender">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+  
+      <div class="form-control">
+        <label class="rubik-labels" for="birthdate">Birthdate</label>
+        <input class="input input-structure" id="birthdate" type="date" formControlName="birthdate" placeholder="Enter your birthdate" />
+      </div>
+  
+      <button type="submit">Sign up</button>
+    </form>
+  </section>
+</div>

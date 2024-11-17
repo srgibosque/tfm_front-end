@@ -1,10 +1,11 @@
-@mixin center(){
+@mixin center() {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.center-component{
+.center-component {
   @include center();
 }
 
@@ -26,6 +27,43 @@
 
 .icon-tab-structure {
   @include center();
-  height: 100%; 
-  padding: 0.875rem; 
+  height: 100%;
+  padding: 0.875rem;
+}
+
+.form-and-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  align-self: stretch;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-structure {
+  padding: 1rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }

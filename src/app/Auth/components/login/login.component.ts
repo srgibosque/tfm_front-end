@@ -4,6 +4,7 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFor
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { login } from '../../actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,9 +21,10 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {
-    this.loginUser = new AuthDTO('', '', '', '');
+    this.loginUser = new AuthDTO(null, '', '', '');
 
     this.email = new UntypedFormControl('', [
       Validators.required
@@ -45,6 +47,10 @@ export class LoginComponent {
     this.loginUser.password = this.password.value;
 
     this.store.dispatch(login({email: this.loginUser.email, password: this.loginUser.password}));
+  }
+
+  toSignUp(): void {
+    this.router.navigate(['/register']);
   }
 
 }

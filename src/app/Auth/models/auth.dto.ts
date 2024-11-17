@@ -1,11 +1,11 @@
 export class AuthDTO {
-  userId: string | null;
+  userId: number | null;
   token: string | null;
   email: string;
   password: string;
 
   constructor(
-    userId: string | null,
+    userId: number | null,
     token: string | null,
     email: string,
     password: string

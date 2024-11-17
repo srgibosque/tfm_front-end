@@ -6,6 +6,10 @@ body{
   margin: 1.25rem;
 }
 
+h1{
+  all: unset;
+}
+
 ul{
   margin: 0;
   padding: 0;
@@ -14,4 +18,12 @@ ul{
 
 a {
   text-decoration: none; 
+}
+
+input {
+  all: unset;
+
+  &::placeholder{
+    all: unset;
+  }
 }

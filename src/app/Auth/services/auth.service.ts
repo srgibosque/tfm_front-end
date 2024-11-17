@@ -4,7 +4,7 @@ import { AuthDTO } from '../models/auth.dto';
 import { Observable } from 'rxjs';
 
 interface AuthToken {
-  userId: string;
+  userId: number;
   token: string;
 }
 
