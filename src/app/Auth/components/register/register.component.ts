@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { Router } from '@angular/router';
 import { UserDTO } from '../../../Profile/models/user.dto';
+import { signup } from '../../actions';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,7 @@ export class RegisterComponent {
     private store: Store<AppState>,
     private router: Router
   ) {
-    this.signUpUser = new UserDTO(null, '', '', '', undefined, null);
+    this.signUpUser = new UserDTO(undefined, '', '', '', undefined, null);
 
     this.name = new UntypedFormControl('', [
       Validators.required,
@@ -60,7 +61,19 @@ export class RegisterComponent {
   }
 
   signUp(): void {
+    this.signUpUser.email = this.email.value;
+    this.signUpUser.name = this.name.value;
+    this.signUpUser.password = this.password.value;
+    this.signUpUser.gender = this.gender.value;
+    this.signUpUser.birthdate = this.birthdate.value;
 
+    this.store.dispatch(signup({
+      email: this.signUpUser.email,
+      name: this.signUpUser.name,
+      gender: this.signUpUser.gender,
+      birthdate: this.signUpUser.birthdate,
+      password: this.signUpUser.password
+    }));
   }
 
   toLogIn(): void {

@@ -1,5 +1,5 @@
 export class UserDTO {
-  id: number | null;
+  id: number | undefined;
   name: string; 
   email: string; 
   password: string; 
@@ -7,7 +7,7 @@ export class UserDTO {
   birthdate: Date | null; 
 
   constructor(
-    id: number | null,
+    id: number | undefined,
     name: string, 
     email: string, 
     password: string, 

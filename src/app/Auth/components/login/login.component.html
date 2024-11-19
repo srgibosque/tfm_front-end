@@ -4,14 +4,14 @@
 <section>
   <h1>Login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-      <label for="email">Email: </label>
-      <input type="email" [formControl]="email" />
+    <div class="form-control">
+      <label class="rubik-labels" for="email">Email: </label>
+      <input class="input input-structure" type="email" [formControl]="email" />
     </div>
 
-    <div>
-      <label for="password">Password: </label>
-      <input type="password" [formControl]="password" />
+    <div class="form-control">
+      <label class="rubik-labels" for="password">Password: </label>
+      <input class="input input-structure" type="password" [formControl]="password" />
     </div>
 
     <button type="submit">Login</button>

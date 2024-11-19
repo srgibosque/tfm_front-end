@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthDTO } from '../models/auth.dto';
 import { Observable } from 'rxjs';
+import { UserDTO } from '../../Profile/models/user.dto';
 
 interface AuthToken {
   userId: number;
@@ -22,5 +23,9 @@ export class AuthService {
 
   login(auth: AuthDTO): Observable<AuthToken> {
     return this.http.post<AuthToken>(this.urlBlogUocApi + '/signin', auth);
+  }
+
+  signup(user: UserDTO): Observable<{message: string}>{
+    return this.http.put<{message: string}>(this.urlBlogUocApi + '/signup', user);
   }
 }
