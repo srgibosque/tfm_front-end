@@ -3,17 +3,18 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, mergeMap, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../services/auth.service";
+import { LocalStorageService } from "../../Shared/services/local-storage.service";
 import { login, loginFailure, loginSuccess, signup, signupFailure, signupSuccess } from "../actions";
 import { AuthDTO } from "../models/auth.dto";
 import { Router } from '@angular/router';
-import { UserDTO } from "../../Profile/models/user.dto";
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private router: Router
+    private localStorageService: LocalStorageService,
+    private router: Router,
   ) { }
 
   login$ = createEffect(() => this.actions$.pipe(
@@ -40,7 +41,8 @@ export class AuthEffects {
 
   loginSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(loginSuccess),
-    tap(() => {
+    tap((accessInfo) => {
+      this.localStorageService.set('token', accessInfo.token);
       this.router.navigate(['/']);
     })
   ), { dispatch: false });
@@ -64,6 +66,13 @@ export class AuthEffects {
     })
   )
   );
+
+  signupSuccess$ = createEffect(() => this.actions$.pipe(
+    ofType(signupSuccess),
+    tap(() => {
+      this.router.navigate(['/login']);
+    })
+  ), { dispatch: false });
 
 }
 
