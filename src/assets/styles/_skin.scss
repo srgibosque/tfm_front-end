@@ -5,7 +5,6 @@
     style: normal;
     weight: $weight;
   }
-
   font-optical-sizing: auto;
   color: $color;
 }
@@ -20,6 +19,10 @@
 
 .rubik-titles {
   @include rubik-font(1.5rem, $text-color-default , 500);
+}
+
+.rubik-buttons {
+  @include rubik-font(1rem, $text-color-default , 500);
 }
 
 .tabs {
@@ -58,4 +61,28 @@
   &::placeholder {
     color: $text-color-light;
   }
+}
+
+.selector-option{
+  background-color: $bg-color-light;
+}
+
+.card{
+  border-radius: 1.5rem;
+  background-color: $bg-color-light;
+}
+
+.btn-primary{
+  background-color: $primary-color-default;
+  border-radius: 2.25rem;
+
+  &:hover{
+    background-color: $primary-color-dark;
+  }
+}
+
+.btn-secondary{
+  background-color: transparent;
+  border-radius: 2.25rem;
+  border: 1px solid $bg-color-lighter;
 }

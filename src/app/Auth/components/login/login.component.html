@@ -1,19 +1,21 @@
-<section>
-  <button (click)="toSignUp()">Sign up</button>
-</section>
-<section>
-  <h1>Login</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="form-control">
-      <label class="rubik-labels" for="email">Email: </label>
-      <input class="input input-structure" type="email" [formControl]="email" />
-    </div>
-
-    <div class="form-control">
-      <label class="rubik-labels" for="password">Password: </label>
-      <input class="input input-structure" type="password" [formControl]="password" />
-    </div>
-
-    <button type="submit">Login</button>
-  </form>
-</section>
+<div class="form-and-button">
+  <button class="rubik-buttons" (click)="toSignUp()">Sign up</button>
+  <section class="form-and-title vertical-large">
+    <h1 class="rubik-titles">Login</h1>
+    <form class="form vertical-medium" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-control vertical-small">
+        <label class="rubik-labels" for="email">Email: </label>
+        <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
+      </div>
+  
+      <div class="form-control vertical-small">
+        <label class="rubik-labels" for="password">Password: </label>
+        <input class="input input-structure" type="password" [formControl]="password" />
+      </div>
+  
+      <div class="fill-content">
+        <button class="btn btn-primary rubik-buttons" type="submit">Login</button>
+      </div>
+    </form>
+  </section>
+</div>

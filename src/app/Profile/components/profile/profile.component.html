@@ -1,3 +1,25 @@
-<button (click)="logout()">Logout</button>
+<div class="vertical-medium">
+  <h1 class="rubik-titles">My profile</h1>
+  <div *ngIf="profileData$ | async as profileData" class="card card-structure vertical-medium">
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Full name</h3>
+      <p>{{profileData.data.user.userData.name}}</p>
+    </div>
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Email</h3>
+      <p>{{profileData.data.user.userData.email}}</p>
+    </div>
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Date of birth</h3>
+      <p>{{profileData.data.user.userData.birthdate}}</p>
+    </div>
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Gender</h3>
+      <p>{{profileData.data.user.userData.gender}}</p>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-secondary rubik-buttons" (click)="logout()">Logout</button>
+  </div>
+</div>
 
-<p>profile works!</p>

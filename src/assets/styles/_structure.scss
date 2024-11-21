@@ -5,8 +5,32 @@
   align-items: center;
 }
 
+@mixin separation($gap, $direction) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: flex-start;
+  gap: $gap;
+  align-self: stretch;
+}
+
+.vertical-small {
+  @include separation(0.5rem, column);
+}
+
+.vertical-medium {
+  @include separation(1.5rem, column);
+}
+
+.vertical-large {
+  @include separation(3rem, column);
+}
+
 .center-component {
   @include center();
+}
+
+.fill-content{
+  width: 100%;
 }
 
 .tabs-structure {
@@ -15,6 +39,7 @@
   gap: 0;
   padding: 0.25rem;
   max-width: 40rem;
+  margin-bottom: 2rem;
 }
 
 .tab-structure {
@@ -31,33 +56,21 @@
   padding: 0.875rem;
 }
 
-.form-and-title {
+.form-and-button {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 3rem;
-  align-self: stretch;
-  max-width: 40rem;
+  align-items: flex-end;
+  gap: 8rem;
   margin: 0 auto;
+  max-width: 40rem;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  align-self: stretch;
   width: 100%;
   box-sizing: border-box;
 }
 
 .form-control {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.5rem;
-  align-self: stretch;
   width: 100%;
   box-sizing: border-box;
 }
@@ -66,4 +79,24 @@
   padding: 1rem 1.5rem;
   width: 100%;
   box-sizing: border-box;
+}
+
+.selector-option-structure{
+  padding: 1rem 1.5rem;
+}
+
+.card-structure {
+  display: flex;
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  text-align: center;
 }

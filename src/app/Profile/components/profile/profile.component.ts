@@ -6,11 +6,12 @@ import { getProfile } from '../../actions';
 import { Profile } from '../../services/profile.service';
 import { Observable } from 'rxjs';
 import { ProfileState } from '../../reducers';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -22,7 +23,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(getProfile());
     this.profileData$ = this.store.select('profileApp');
-    console.log(this.profileData$);
   }
 
   logout(): void {

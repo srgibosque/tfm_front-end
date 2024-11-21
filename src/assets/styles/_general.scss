@@ -1,29 +1,35 @@
-html{
+html {
   background-color: $bg-color-default;
   color: $text-color-default;
 }
-body{
-  margin: 1.25rem;
+
+body {
+  margin: 1.75rem;
 }
 
-h1{
+h1,
+h3,
+p,
+button,
+select,
+option {
   all: unset;
 }
 
-ul{
+ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 input {
   all: unset;
 
-  &::placeholder{
+  &::placeholder {
     all: unset;
   }
 }
