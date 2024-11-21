@@ -1,5 +1,4 @@
 import { createReducer, on } from "@ngrx/store";
-import { AuthDTO } from "../models/auth.dto";
 import { login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
 
 export interface Credentials {

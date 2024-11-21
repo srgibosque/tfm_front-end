@@ -2,7 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 
 //LOG IN
-export const autoLogin = createAction('[AUTH] Auto login')
+export const autoLogin = createAction('[AUTH] Auto login');
 
 export const login = createAction(
   '[AUTH] Login',
