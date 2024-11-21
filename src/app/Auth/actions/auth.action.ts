@@ -2,6 +2,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 
 //LOG IN
+export const autoLogin = createAction('[AUTH] Auto login')
+
 export const login = createAction(
   '[AUTH] Login',
   props<{ email: string, password: string }>()
@@ -31,4 +33,9 @@ export const signupSuccess = createAction(
 export const signupFailure = createAction(
   '[AUTH] Signup failure',
   props<{ payload: HttpErrorResponse }>()
+);
+
+//LOGOUT
+export const logout = createAction(
+  '[AUTH] Logout'
 );

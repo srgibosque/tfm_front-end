@@ -15,6 +15,7 @@ import { EditMatchComponent } from './League/components/edit-match/edit-match.co
 import { MatchesListComponent } from './League/components/matches-list/matches-list.component';
 import { LeagueTableComponent } from './League/components/league-table/league-table.component';
 import { LeagueDetailComponent } from './League/components/league-detail/league-detail.component';
+import { authGuard } from './Auth/guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -28,19 +29,22 @@ export const routes: Routes = [
   { 
     path: '', 
     redirectTo: 'next-matches', 
-    pathMatch: 'full' 
+    pathMatch: 'full',
   },
   {
     path: 'next-matches',
     component: NextMatchesListComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'my-teams',
     component: TeamsListComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'team/form',
     component: TeamFormComponent,
+    canActivate: [authGuard],
 
     children: [
       {
@@ -52,18 +56,22 @@ export const routes: Routes = [
   {
     path: 'my-team/:teamId',
     component: TeamDetailComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'my-leagues',
     component: LeagueListComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'league/create',
     component: LeagueCreateComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'my-league/:leagueId',
     component: LeagueDetailComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'table',
@@ -78,14 +86,17 @@ export const routes: Routes = [
   {
     path: 'match/edit/:matchId',
     component: EditMatchComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'profile-edit',
     component: EditProfileComponent,
+    canActivate: [authGuard],
   },
   { path: '**', component: NotFoundComponent }
 ];

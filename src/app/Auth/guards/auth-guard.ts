@@ -1,47 +1,26 @@
-// import { Injectable } from '@angular/core';
-// import {
-//   ActivatedRouteSnapshot,
-//   CanActivate,
-//   Router,
-//   RouterStateSnapshot,
-//   UrlTree,
-// } from '@angular/router';
-// import { Observable, map } from 'rxjs';
-// import { LocalStorageService } from '../Services/local-storage.service';
-// import { AppState } from '../app.reducer';
-// import { Store } from '@ngrx/store';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducer';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class AuthGuard implements CanActivate {
+export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const router = inject(Router);
+  const store = inject(Store<AppState>);
 
-//   constructor(
-//     private router: Router,
-//     private localStorageService: LocalStorageService,
-//     private store: Store<AppState>
-//   ) {}
+  return store.select('authApp').pipe(
+    map((authResponse) => {
+      const token = authResponse.credentials.token;
 
-//   canActivate(
-//     route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ):
-//     | Observable<boolean | UrlTree>
-//     | Promise<boolean | UrlTree>
-//     | boolean
-//     | UrlTree {
-//       return this.store.select('authApp').pipe(
-//         map((authResponse) => {
-//           const access_token = authResponse.credentials.access_token;
+      if (token) {
+        console.log('Access');
+        return true;
 
-//           if (access_token) {
-//             return true;
-
-//           } else {
-//             this.router.navigate(['/login']);
-//             return false;
-//           }
-//         })
-//       );
-//   }
-// }
+      } else {
+        console.log('Access denied');
+        router.navigate(['/login']);
+        return false;
+      }
+    })
+  );
+}

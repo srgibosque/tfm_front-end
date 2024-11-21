@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, mergeMap, of, switchMap, tap } from "rxjs";
+import { catchError, EMPTY, map, mergeMap, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../services/auth.service";
 import { LocalStorageService } from "../../Shared/services/local-storage.service";
-import { login, loginFailure, loginSuccess, signup, signupFailure, signupSuccess } from "../actions";
+import { autoLogin, login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
 import { AuthDTO } from "../models/auth.dto";
 import { Router } from '@angular/router';
 
@@ -16,6 +16,20 @@ export class AuthEffects {
     private localStorageService: LocalStorageService,
     private router: Router,
   ) { }
+
+  autoLogin$ = createEffect(() => this.actions$.pipe(
+    ofType(autoLogin),
+    switchMap(() => {
+      const token = this.localStorageService.get('token');
+      const userId = this.localStorageService.get('userId');
+      if (token && userId) {
+        return of(loginSuccess({ userId: +userId, token }));
+      } else {
+        this.router.navigate(['/login']);
+        return EMPTY;
+      }
+    })
+  ));
 
   login$ = createEffect(() => this.actions$.pipe(
     // ofType filters in which actions the effect triggers
@@ -43,6 +57,7 @@ export class AuthEffects {
     ofType(loginSuccess),
     tap((accessInfo) => {
       this.localStorageService.set('token', accessInfo.token);
+      this.localStorageService.set('userId', accessInfo.userId.toString());
       this.router.navigate(['/']);
     })
   ), { dispatch: false });
@@ -67,10 +82,19 @@ export class AuthEffects {
   )
   );
 
-  signupSuccess$ = createEffect(() => this.actions$.pipe(
+  signupSuccess = createEffect(() => this.actions$.pipe(
     ofType(signupSuccess),
     tap(() => {
       this.router.navigate(['/login']);
+    })
+  ), { dispatch: false });
+
+  logout = createEffect(() => this.actions$.pipe(
+    ofType(logout),
+    tap(() => {
+      this.router.navigate(['/login']);
+      this.localStorageService.remove('userId');
+      this.localStorageService.remove('token');
     })
   ), { dispatch: false });
 

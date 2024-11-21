@@ -1,4 +1,4 @@
-<nav class="center-component">
+<nav class="center-component" *ngIf="isNavBarShown$ | async">
   <ul class="tabs-structure tabs">
     <li>
       <a class="icon-tab-structure tab" routerLink="/next-matches" routerLinkActive="active">

@@ -1,9 +1,14 @@
 import { createReducer, on } from "@ngrx/store";
 import { AuthDTO } from "../models/auth.dto";
-import { login, loginFailure, loginSuccess, signup, signupFailure, signupSuccess } from "../actions";
+import { login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
+
+export interface Credentials {
+  userId: number | null;
+  token: string | null;
+}
 
 export interface AuthState {
-  credentials: AuthDTO;
+  credentials: Credentials;
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -11,24 +16,20 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-  credentials: new AuthDTO(null, null, '', ''),
+  credentials: { userId: null, token: null },
   loading: false,
   loaded: false,
   error: null,
   message: null,
 }
 
+//LOGIN
 export const authReducer = createReducer(
   initialState,
-  on(login, (state, { email, password }) => ({
+  on(login, (state) => ({
     ...state,
     loading: true,
     loaded: false,
-    credentials: {
-      ...state.credentials,
-      email: email,
-      password: password
-    }
   })),
 
   on(loginSuccess, (state, { userId, token }) => ({
@@ -41,31 +42,41 @@ export const authReducer = createReducer(
       token: token
     }
   })),
-  
-  on(loginFailure, (state, {payload}) => ({
+
+  on(loginFailure, (state, { payload }) => ({
     ...state,
     loading: false,
     loaded: false,
     error: payload
   })),
 
+  //SIGN UP
   on(signup, (state) => ({
     ...state,
     loading: true,
     loaded: false
   })),
 
-  on(signupSuccess, (state, {message}) => ({
+  on(signupSuccess, (state, { message }) => ({
     ...state,
     loading: false,
     loaded: true,
     message: message
   })),
 
-  on(signupFailure, (state, {payload}) => ({
+  on(signupFailure, (state, { payload }) => ({
     ...state,
-    loading: true,
+    loading: false,
     loaded: false,
     error: payload
+  })),
+
+  //LOGOUT
+  on(logout, (state) => ({
+    ...state,
+    loading: false,
+    loaded: false,
+    credentials: { userId: null, token: null },
+    message: null
   })),
 );
