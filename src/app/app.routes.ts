@@ -94,7 +94,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'profile-edit',
+    path: 'profile/edit',
     component: EditProfileComponent,
     canActivate: [authGuard],
   },
