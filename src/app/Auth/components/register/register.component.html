@@ -1,5 +1,5 @@
 <div class="form-and-button">
-  <button class="rubik-buttons" (click)="toLogIn()">Log in</button>
+  <button class="rubik-buttons" [routerLink]="['/login']">Log in</button>
   <section class="vertical-large">
     <h1 class="rubik-titles">Sign up</h1>
     <form class="form vertical-medium" [formGroup]="signUpForm" (ngSubmit)="signUp()">

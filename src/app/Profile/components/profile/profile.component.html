@@ -1,22 +1,22 @@
 <div class="vertical-medium">
   <h1 class="rubik-titles">My profile</h1>
   <div class="card card-structure ">
-    <div *ngIf="profileData$ | async as profileData" class="vertical-medium">
+    <div *ngIf="userData$ | async as userData" class="vertical-medium">
       <div class="vertical-small">
         <h3 class="rubik-labels">Full name</h3>
-        <p>{{profileData.data.user.userData.name}}</p>
+        <p>{{userData.name}}</p>
       </div>
       <div class="vertical-small">
         <h3 class="rubik-labels">Email</h3>
-        <p>{{profileData.data.user.userData.email}}</p>
+        <p>{{userData.email}}</p>
       </div>
       <div class="vertical-small">
         <h3 class="rubik-labels">Date of birth</h3>
-        <p>{{profileData.data.user.userData.birthdate}}</p>
+        <p>{{userData.birthdate}}</p>
       </div>
       <div class="vertical-small">
         <h3 class="rubik-labels">Gender</h3>
-        <p>{{profileData.data.user.userData.gender}}</p>
+        <p>{{userData.gender}}</p>
       </div>
     </div>
 

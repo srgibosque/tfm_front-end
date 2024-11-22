@@ -1,9 +1,7 @@
 import { getProfileFailure } from './../actions/profile.action';
-import { ProfileComponent } from './../components/profile/profile.component';
 import { createReducer, on } from "@ngrx/store";
 import { getProfile, getProfileSuccess } from "../actions";
 import { HttpErrorResponse } from "@angular/common/http";
-import { User } from "../models/user.interface";
 import { Profile } from '../services/profile.service';
 
 export interface ProfileState {

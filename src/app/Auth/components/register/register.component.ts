@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UserDTO } from '../../../Profile/models/user.dto';
 import { signup } from '../../actions';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -74,9 +74,5 @@ export class RegisterComponent {
       birthdate: this.signUpUser.birthdate,
       password: this.signUpUser.password
     }));
-  }
-
-  toLogIn(): void {
-    this.router.navigate(['/login']);
   }
 }

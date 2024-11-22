@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { ProfileState } from '../../reducers';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { selectUserData } from '../../selectors/profile.selectors';
+import { User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-profile',
@@ -17,13 +19,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
-  profileData$?: Observable<ProfileState>
+  userData$?: Observable<User>
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(getProfile());
-    this.profileData$ = this.store.select('profileApp');
+    this.userData$ = this.store.select(selectUserData);
   }
 
   logout(): void {
