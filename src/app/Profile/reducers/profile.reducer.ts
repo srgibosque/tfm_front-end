@@ -1,11 +1,9 @@
-import { getProfileFailure } from './../actions/profile.action';
 import { createReducer, on } from "@ngrx/store";
-import { getProfile, getProfileSuccess } from "../actions";
-import { HttpErrorResponse } from "@angular/common/http";
+import { getProfile, getProfileFailure, getProfileSuccess, updateProfile, updateProfileFailure, updateProfileSuccess } from "../actions";
 import { Profile } from '../services/profile.service';
 
 export interface ProfileState {
-  data: Profile ;
+  data: Profile;
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -61,4 +59,38 @@ export const profileReducer = createReducer(
     loading: false,
     error: error,
   })),
+
+  on(updateProfile, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false,
+    message: null,
+  })),
+
+  on(updateProfileSuccess, (state, { message, user }) => ({
+    ...state,
+    loading: false,
+    loaded: true,
+    message: message,
+    data: {
+      ...state.data,
+      user: {
+        ...state.data.user, 
+        userData: {
+          ...state.data.user.userData, 
+          name: user.name, 
+          email: user.email, 
+          gender: user.gender, 
+          birthdate: user.birthdate, 
+        },
+      },
+    },
+  })),
+
+  on(updateProfileFailure, (state, {error}) => ({
+    ...state,
+    loaded: false,
+    loading: false,
+    error: error,
+  }))
 );

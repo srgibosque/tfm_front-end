@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.interface';
 import { selectUserData } from '../../selectors/profile.selectors';
+import { DateFormattingService } from '../../../Shared/services/date-formatting.service';
+import { updateProfile } from '../../actions';
 
 @Component({
   selector: 'app-edit-profile',
@@ -26,7 +28,7 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private formBuilder: UntypedFormBuilder,
     private store: Store<AppState>,
-    private router: Router
+    private dateFormattingService: DateFormattingService
   ) {
 
     this.name = new UntypedFormControl('', [
@@ -58,21 +60,25 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userData$.subscribe((userData) => {
       if (userData) {
-        const formattedBirthdate = userData.birthdate
-          ? new Date(userData.birthdate).toISOString().split('T')[0]
-          : '';
 
         this.editProfileForm.patchValue({
           name: userData.name,
           email: userData.email,
           gender: userData.gender,
-          birthdate: formattedBirthdate,
+          birthdate: this.dateFormattingService.formatDateToInput(userData.birthdate),
         });
       }
     })
   }
 
   edit(): void {
-
+    const formValues = this.editProfileForm.value;
+    this.store.dispatch(updateProfile({
+      name: formValues.name,
+      email: formValues.email,
+      gender: formValues.gender,
+      birthdate: formValues.birthdate,
+    }));
   }
+  
 }
