@@ -56,19 +56,23 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.userData$.subscribe((userData) => {
-        if(userData){
-          this.editProfileForm.patchValue({
-            name: userData.name,
-            email: userData.email,
-            gender: userData.gender,
-            birthdate: userData.birthdate
-          });
-        }
-      })
+    this.userData$.subscribe((userData) => {
+      if (userData) {
+        const formattedBirthdate = userData.birthdate
+          ? new Date(userData.birthdate).toISOString().split('T')[0]
+          : '';
+
+        this.editProfileForm.patchValue({
+          name: userData.name,
+          email: userData.email,
+          gender: userData.gender,
+          birthdate: formattedBirthdate,
+        });
+      }
+    })
   }
 
   edit(): void {
-    
+
   }
 }

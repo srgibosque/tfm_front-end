@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { AuthDTO } from '../../models/auth.dto';
+import { Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { login } from '../../actions';
-import { Router } from '@angular/router';
+import { AuthDTO } from '../../models/auth.dto';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -47,10 +47,6 @@ export class LoginComponent {
     this.loginUser.password = this.password.value;
 
     this.store.dispatch(login({email: this.loginUser.email, password: this.loginUser.password}));
-  }
-
-  toSignUp(): void {
-    this.router.navigate(['/register']);
   }
 
 }
