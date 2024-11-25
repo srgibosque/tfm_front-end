@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProfileEffects } from './Profile/effects/profile.effects';
 import { AuthInterceptorService } from './Auth/services/auth-interceptor.service';
+import { TeamEffects } from './Team/effects/team.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideStore(appReducers),
-    provideEffects(AuthEffects, ProfileEffects),
+    provideEffects(AuthEffects, ProfileEffects, TeamEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: environment.production }),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
 ]

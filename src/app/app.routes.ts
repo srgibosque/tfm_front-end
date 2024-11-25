@@ -54,7 +54,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'my-team/:teamId',
+    path: 'my-teams/:teamId',
     component: TeamDetailComponent,
     canActivate: [authGuard],
   },

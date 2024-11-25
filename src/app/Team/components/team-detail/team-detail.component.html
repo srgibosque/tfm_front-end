@@ -1,1 +1,4 @@
-<p>team-detail works!</p>
+<div *ngIf="team$ | async as team">
+  <h1>{{ team.name }}</h1>
+  <p>Location: {{ team.location }}</p>
+</div>

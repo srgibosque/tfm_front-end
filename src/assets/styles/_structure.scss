@@ -13,6 +13,13 @@
   align-self: stretch;
 }
 
+@mixin card($align) {
+  display: flex;
+  justify-content: space-between;
+  align-items: $align;
+  align-self: stretch;
+}
+
 .vertical-small {
   @include separation(0.5rem, column);
 }
@@ -25,11 +32,15 @@
   @include separation(3rem, column);
 }
 
+.horizontal-medium {
+  @include separation(1.5rem, row);
+}
+
 .center-component {
   @include center();
 }
 
-.fill-content{
+.fill-content {
   width: 100%;
 }
 
@@ -81,16 +92,18 @@
   box-sizing: border-box;
 }
 
-.selector-option-structure{
+.selector-option-structure {
   padding: 1rem 1.5rem;
 }
 
-.card-structure {
-  display: flex;
+.info-card {
+  @include card(flex-start);
   padding: 1.5rem;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
+}
+
+.clickable-card {
+  @include card(center);
+  padding: 1.5rem;
 }
 
 .btn {
