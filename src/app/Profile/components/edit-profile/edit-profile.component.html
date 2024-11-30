@@ -9,17 +9,17 @@
   <h1 class="rubik-titles">Edit Profile</h1>
 
   <form class="form vertical-medium" [formGroup]="editProfileForm" (ngSubmit)="edit()">
-    <div class="form-control vertical-small">
+    <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="name">Name</label>
       <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter your name" />
     </div>
 
-    <div class="form-control vertical-small">
+    <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="email">Email</label>
       <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
     </div>
 
-    <div class="form-control vertical-small">
+    <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="gender">Gender</label>
       <select class="input input-structure" id="gender" formControlName="gender">
         <option class="selector-option selector-option-structure" value="" disabled selected>Select Gender</option>
@@ -28,7 +28,7 @@
       </select>
     </div>
 
-    <div class="form-control vertical-small">
+    <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="birthdate">Birthdate</label>
       <input class="input input-structure" id="birthdate" type="date" formControlName="birthdate" />
     </div>

@@ -14,8 +14,8 @@ export const initialState: TeamState = {
   team: {
     id: undefined,
     name: '',
-    contactEmail: '',
-    players: [],
+    contact_email: '',
+    Users: [],
     location: '',
     userteamname: '',
   },

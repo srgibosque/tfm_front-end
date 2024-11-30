@@ -4,7 +4,7 @@
     <li class="fill-content" *ngFor="let team of teamData$ | async">
       <a [routerLink]="['/my-teams', team.id]">
         <div class="card clickable-card">
-          <div class="vertical-small">
+          <div class="vertical-extra-small">
             <h3>{{team.name}}</h3>
             <p class="rubik-secondary">{{team.location}}</p>
           </div>

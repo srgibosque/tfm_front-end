@@ -3,12 +3,12 @@
   <section class="form-and-title vertical-large">
     <h1 class="rubik-titles">Login</h1>
     <form class="form vertical-medium" [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="email">Email: </label>
         <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
       </div>
   
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="password">Password: </label>
         <input class="input input-structure" type="password" [formControl]="password" />
       </div>

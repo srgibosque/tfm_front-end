@@ -20,8 +20,12 @@
   align-self: stretch;
 }
 
-.vertical-small {
+.vertical-extra-small {
   @include separation(0.5rem, column);
+}
+
+.vertical-small {
+  @include separation(1rem, column);
 }
 
 .vertical-medium {

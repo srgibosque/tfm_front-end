@@ -1,4 +1,51 @@
-<div *ngIf="team$ | async as team">
-  <h1>{{ team.name }}</h1>
-  <p>Location: {{ team.location }}</p>
+<div class="vertical-medium">
+
+  <a [routerLink]="['/my-teams']">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+    </svg>
+    <button>Back to my teams</button>
+  </a>
+
+  <div class="vertical-medium" *ngIf="team$ | async as team">
+    <h1 class="rubik-titles">{{ team.name }}</h1>
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Team info</h3>
+      <div class="card info-card">
+        <div class="vertical-medium">
+          <div class="vertical-extra-small">
+            <h3 class="rubik-labels">Location</h3>
+            <p>{{ team.location }}</p>
+          </div>
+          <div class="vertical-extra-small">
+            <h3 class="rubik-labels">Contact info</h3>
+            <p>{{ team.contact_email }}</p>
+          </div>
+        </div>
+  
+        <a class="btn btn-secondary" [routerLink]="['']">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path
+              d="M10.0535 19.1864L21.8105 19.1864L21.8105 21.1864L3.81049 21.1864L3.81049 16.9434L13.7105 7.04336L17.9525 11.2864L10.0535 19.1864ZM15.1235 5.62936L17.2455 3.50836C17.433 3.32089 17.6873 3.21558 17.9525 3.21558C18.2177 3.21558 18.472 3.32089 18.6595 3.50836L21.4885 6.33636C21.5815 6.42924 21.6552 6.53952 21.7055 6.66092C21.7559 6.78232 21.7818 6.91245 21.7818 7.04386C21.7818 7.17528 21.7559 7.30541 21.7055 7.4268C21.6552 7.5482 21.5815 7.65849 21.4885 7.75136L19.3665 9.87236L15.1235 5.62936Z"
+              fill="white" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="vertical-small">
+      <h3 class="rubik-labels">Players</h3>
+      <ul class="vertical-small" *ngIf="team.Users && team.Users.length > 0; else noPlayers">
+        <li class="vertical-extra-small card info-card" *ngFor="let player of team.Users"  >
+          <h3>{{player.name}}</h3>
+          <p class="rubik-secondary">{{player.gender}}</p>
+        </li>
+      </ul>
+
+      <ng-template #noPlayers>
+        <p>No players found.</p>
+      </ng-template>
+    </div>
+  </div>
+
+
 </div>

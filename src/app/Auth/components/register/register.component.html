@@ -3,22 +3,22 @@
   <section class="vertical-large">
     <h1 class="rubik-titles">Sign up</h1>
     <form class="form vertical-medium" [formGroup]="signUpForm" (ngSubmit)="signUp()">
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="name">Name</label>
         <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter your name" />
       </div>
   
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="email">Email</label>
         <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
       </div>
   
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="password">Password</label>
         <input class="input input-structure" type="password" [formControl]="password"/>
       </div>
   
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="gender">Gender</label>
         <select class="input input-structure" id="gender" formControlName="gender">
           <option class="selector-option selector-option-structure" value="" disabled selected>Select Gender</option>
@@ -27,7 +27,7 @@
         </select>
       </div>
   
-      <div class="form-control vertical-small">
+      <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="birthdate">Birthdate</label>
         <input class="input input-structure" id="birthdate" type="date" formControlName="birthdate"/>
       </div>
