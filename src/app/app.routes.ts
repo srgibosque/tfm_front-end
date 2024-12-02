@@ -69,7 +69,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'my-league/:leagueId',
+    path: 'my-leagues/:leagueId',
     component: LeagueDetailComponent,
     canActivate: [authGuard],
     children: [

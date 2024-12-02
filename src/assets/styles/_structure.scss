@@ -40,12 +40,29 @@
   @include separation(1.5rem, row);
 }
 
+.teams-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .center-component {
   @include center();
 }
 
 .fill-content {
   width: 100%;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .tabs-structure {
@@ -107,6 +124,15 @@
 
 .clickable-card {
   @include card(center);
+  padding: 1.5rem;
+}
+
+.match-card-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  align-self: stretch;
   padding: 1.5rem;
 }
 

@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ProfileEffects } from './Profile/effects/profile.effects';
 import { AuthInterceptorService } from './Auth/services/auth-interceptor.service';
 import { TeamEffects } from './Team/effects/team.effects';
+import { LeagueEffects } from './League/effects/league.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideStore(appReducers),
-    provideEffects(AuthEffects, ProfileEffects, TeamEffects),
+    provideEffects(AuthEffects, ProfileEffects, TeamEffects, LeagueEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: environment.production }),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
 ]

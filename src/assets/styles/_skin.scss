@@ -29,6 +29,10 @@
   @include rubik-font(1rem, $text-color-default , 500);
 }
 
+.rubik-score {
+  @include rubik-font(1.75rem, $text-color-default , 500);
+}
+
 .tabs {
   border-radius: 1.75rem;
   background-color: $bg-color-light;
@@ -74,6 +78,11 @@
 .card{
   border-radius: 1.5rem;
   background-color: $bg-color-light;
+}
+
+.match-card{
+  border-radius: 1.5rem;
+  border: 1px solid $bg-color-lighter;
 }
 
 .btn-primary{

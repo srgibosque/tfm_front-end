@@ -1,1 +1,36 @@
-<p>league-detail works!</p>
+<div class="vertical-medium">
+
+  <a [routerLink]="['/my-teams']">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+    </svg>
+    <button>Back to my leagues</button>
+  </a>
+
+  <div class="vertical-medium" *ngIf="league$ | async as league">
+    <h1 class="rubik-titles">{{ league.name }}</h1>
+
+    <div class="vertical-small">
+      <h3 class="rubik-labels">League info</h3>
+      <div class="card info-card">
+        <div class="vertical-medium">
+          <div class="vertical-extra-small">
+            <h3 class="rubik-labels">Location</h3>
+            <p>{{ league.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fill-content">
+      <nav class="">
+        <ul class="">
+          <li><a [routerLink]="['table']" routerLinkActive="active">Table</a></li>
+          <li><a [routerLink]="['matches']" routerLinkActive="active">Matches</a></li>
+        </ul>
+      </nav>
+      <router-outlet />
+    </div>
+  </div>
+
+</div>
