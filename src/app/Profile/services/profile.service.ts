@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.interface';
 import { Team } from '../../Team/models/team.interface';
 import { League } from '../../League/models/league.interface';
-import { Match } from '../../League/models/match.interface';
+import { Match } from '../../Match/models/match.interface';
 
 export interface Profile {
   user: {

@@ -77,7 +77,7 @@
 .tab-structure {
   display: inline-flex;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1;
   align-items: center;
   padding: 1rem 2rem;
 }
@@ -86,6 +86,24 @@
   @include center();
   height: 100%;
   padding: 0.875rem;
+}
+
+.sub-tabs-structure {
+  display: flex;
+  gap: 0;
+  width: 100%;
+}
+
+.sub-tab-structure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+}
+
+.sub-tabs-wrapper {
+  @include separation(0.5rem, column);
+  padding: 0.25rem;
 }
 
 .form-and-button {

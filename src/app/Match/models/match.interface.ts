@@ -5,9 +5,9 @@ export interface Match {
   date: string | null;
   homeTeamGoals: number | null;
   awayTeamGoals: number | null;
-  homeTeamId: number;
-  awayTeamId: number;
-  leagueId: number;
+  homeTeamId?: number;
+  awayTeamId?: number;
+  leagueId?: number;
   createdAt?: string;
   updatedAt?: string; 
 }

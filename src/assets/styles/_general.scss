@@ -34,3 +34,11 @@ input {
     all: unset;
   }
 }
+
+.router-outlet-wrapper {
+  width: 100%; 
+
+  ::ng-deep app-matches-list {
+    width: 100%; 
+  }
+}

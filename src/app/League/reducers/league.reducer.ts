@@ -15,6 +15,7 @@ export const initialState: LeagueState = {
     id: undefined,
     name: '',
     Matches: [],
+    Teams: [],
     location: '',
   },
   loading: false,

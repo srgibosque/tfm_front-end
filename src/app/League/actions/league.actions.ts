@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 import { League } from "../models/league.interface";
+import { Match } from "../../Match/models/match.interface";
 
 export const getLeague = createAction(
   '[TEAM] Get League',

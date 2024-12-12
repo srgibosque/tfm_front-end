@@ -1,0 +1,36 @@
+<section class="vertical-medium">
+  <a (click)="goToLeague()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+    </svg>
+    <button>Back to profile</button>
+  </a>
+
+  <h1 class="rubik-titles">Edit Profile</h1>
+
+  <form class="form vertical-medium" [formGroup]="editMatchForm" (ngSubmit)="editMatch()">
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="date">Date and hour</label>
+      <input class="input input-structure" type="datetime" [formControl]="date" placeholder="Enter the date" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="location">Location</label>
+      <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter the location of the match" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="homeTeamGoals">Home team goals</label>
+      <input class="input input-structure" type="number" [formControl]="homeTeamGoals" placeholder="Goals" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="awayTeamGoals">Away team goals</label>
+      <input class="input input-structure" type="number" [formControl]="awayTeamGoals" placeholder="Goals" />
+    </div>
+
+    <div class="fill-content">
+      <button type="submit" class="btn btn-primary rubik-buttons fill-content">Update</button>
+    </div>
+  </form>
+</section>

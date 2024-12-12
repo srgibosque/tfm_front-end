@@ -1,1 +1,1 @@
-export * from './league.reducer'
+export * from './league.reducer';

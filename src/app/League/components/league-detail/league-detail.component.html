@@ -1,6 +1,6 @@
 <div class="vertical-medium">
 
-  <a [routerLink]="['/my-teams']">
+  <a [routerLink]="['/my-leagues']">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
     </svg>
@@ -22,14 +22,16 @@
       </div>
     </div>
 
-    <div class="fill-content">
-      <nav class="">
-        <ul class="">
-          <li><a [routerLink]="['table']" routerLinkActive="active">Table</a></li>
-          <li><a [routerLink]="['matches']" routerLinkActive="active">Matches</a></li>
+    <div class="sub-tabs-wrapper tabs">
+      <nav class="fill-content">
+        <ul class="sub-tabs-structure">
+          <li class="fill-content"><a class="sub-tab-structure tab" [routerLink]="['table']" routerLinkActive="active">Table</a></li>
+          <li class="fill-content"><a class="sub-tab-structure tab" [routerLink]="['matches']" routerLinkActive="active">Matches</a></li>
         </ul>
       </nav>
-      <router-outlet />
+      <div class="router-outlet-wrapper">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 

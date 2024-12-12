@@ -5,7 +5,8 @@ import { Match } from '../../models/match.interface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
-import { selectMatches } from '../../selectors/league.selectors';
+import { selectMatches, selectTeams } from '../../../League/selectors/league.selectors';
+import { Team } from '../../../Team/models/team.interface';
 
 @Component({
   selector: 'app-matches-list',
@@ -16,10 +17,16 @@ import { selectMatches } from '../../selectors/league.selectors';
 })
 export class MatchesListComponent implements OnInit {
   matches$?: Observable<Match[]>;
- 
-  constructor(private store: Store<AppState>) {}
- 
+  teams$?: Observable<Team[]>;
+
+  constructor(private store: Store<AppState>) { }
+
   ngOnInit(): void {
-     this.matches$ = this.store.select(selectMatches)
- }
+    this.matches$ = this.store.select(selectMatches);
+    this.teams$ = this.store.select(selectTeams);
+  }
+
+  getTeamName(teamId: number, teams: Team[]): string {
+    return teams.find(team => team.id === teamId)?.name || 'Team name';
+  }
 }
