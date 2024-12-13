@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { DateFormattingService } from '../../../Shared/services/date-formatting.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { getMatch } from '../../actions';
+import { getMatch, updateMatch } from '../../actions';
 
 @Component({
   selector: 'app-edit-match',
@@ -69,16 +69,21 @@ export class EditMatchComponent implements OnInit {
   }
 
   editMatch(): void {
-    // const formValues = this.editMatchForm.value;
-    // this.store.dispatch(updateMatch({
-    //   location: formValues.location,
-    //   awayTeamGoals: formValues.awayTeamGoals,
-    //   homeTeamGoals: formValues.homeTeamGoals,
-    //   date: formValues.date,
-    // }));
+    const formValues = this.editMatchForm.value;
+    const matchId = this.route.snapshot.paramMap.get('matchId');
+
+    if (matchId) {
+      this.store.dispatch(updateMatch({
+        matchId,
+        date: formValues.date,
+        location: formValues.location,
+        homeTeamGoals: formValues.homeTeamGoals,
+        awayTeamGoals: formValues.awayTeamGoals,
+      }));
+    }
   }
 
-  goToLeague(){
+  goToLeague() {
     this.router.navigate(['/my-leagues', this.leagueId]);
   }
 }

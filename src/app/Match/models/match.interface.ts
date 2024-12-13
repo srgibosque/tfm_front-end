@@ -1,6 +1,6 @@
 export interface Match {
   id?: number;
-  name: string;
+  name?: string;
   location: string | null;
   date: string | null;
   homeTeamGoals: number | null;

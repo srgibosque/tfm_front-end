@@ -19,7 +19,7 @@ export const getMatchFailure = createAction(
 
 export const updateMatch = createAction(
   '[MATCH] Update match',
-  props<{ date: Date, location: string, homeTeamGoals: number, awayTeamGoals: number }>()
+  props<{ matchId: string, date: string, location: string, homeTeamGoals: number, awayTeamGoals: number }>()
 );
 
 export const updateMatchSuccess = createAction(

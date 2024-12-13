@@ -19,6 +19,6 @@ export class TeamEffects {
         catchError((err) => of(getTeamFailure({ error: err })))
       )
     })
-  )
-  );
+  ));
+
 }

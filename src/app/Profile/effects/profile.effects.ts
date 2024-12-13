@@ -20,8 +20,7 @@ export class ProfileEffects {
         catchError((err) => of(getProfileFailure({ error: err })))
       )
     })
-  )
-  );
+  ));
 
   updateProdile$ = createEffect(() => this.actions$.pipe(
     ofType(updateProfile),
