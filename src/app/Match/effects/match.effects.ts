@@ -30,7 +30,7 @@ export class MatchEffects {
       const updatedMatch: Match = { date, location, homeTeamGoals, awayTeamGoals };
       return this.matchService.updateMatch(matchId, updatedMatch).pipe(
         map(({ message, match }) => {
-          return updateMatchSuccess({ message, match})
+          return updateMatchSuccess({ message, match })
         }),
 
         catchError((err) => {
@@ -41,12 +41,12 @@ export class MatchEffects {
   ));
 
   updateMatchSuccess$ = createEffect(() => this.actions$.pipe(
-      ofType(updateMatchSuccess),
-      tap(({ match }) => {
-        const leagueId = match.leagueId;
-        if(leagueId){
-          this.router.navigate(['/my-leagues', leagueId, 'matches']);
-        }
-      })
-    ), { dispatch: false });
+    ofType(updateMatchSuccess),
+    tap(({ match }) => {
+      const leagueId = match.leagueId;
+      if (leagueId) {
+        this.router.navigate(['/my-leagues', leagueId, 'matches']);
+      }
+    })
+  ), { dispatch: false });
 }

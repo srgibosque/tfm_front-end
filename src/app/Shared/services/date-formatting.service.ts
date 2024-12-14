@@ -16,5 +16,15 @@ export class DateFormattingService {
     return !isNaN(date.getTime())
     ? date.toISOString().split('T')[0]
     : '';
+  }
+
+  formatDateAndHourToInput(dateString: string | null | undefined): string {
+    if (!dateString){
+      return '';
+    }
+    const date = new Date(dateString);
+    return !isNaN(date.getTime())
+    ? date.toISOString().slice(0, 16)
+    : '';
   }  
 }

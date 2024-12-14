@@ -11,7 +11,7 @@
   <form class="form vertical-medium" [formGroup]="editMatchForm" (ngSubmit)="editMatch()">
     <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="date">Date and hour</label>
-      <input class="input input-structure" type="datetime" [formControl]="date" placeholder="Enter the date" />
+      <input class="input input-structure" type="datetime-local" [formControl]="date" placeholder="Enter the date" />
     </div>
 
     <div class="form-control vertical-extra-small">

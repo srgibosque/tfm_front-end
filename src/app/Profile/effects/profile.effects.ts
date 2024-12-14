@@ -1,15 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap } from "rxjs";
+import { catchError, map, of, switchMap, tap } from "rxjs";
 import { ProfileService } from "../services/profile.service";
 import { getProfile, getProfileFailure, getProfileSuccess, updateProfile, updateProfileFailure, updateProfileSuccess } from "../actions";
 import { User } from "../models/user.interface";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class ProfileEffects {
   constructor(
     private actions$: Actions,
     private profileService: ProfileService,
+    private router: Router, 
   ) { }
 
   getProfile$ = createEffect(() => this.actions$.pipe(
@@ -28,7 +30,7 @@ export class ProfileEffects {
       const updatedUser: User = { name, email, gender, birthdate }
       return this.profileService.updateProfile(updatedUser).pipe(
         map(({ message, user }) => {
-          return updateProfileSuccess({ message, user})
+          return updateProfileSuccess({ message, user })
         }),
 
         catchError((err) => {
@@ -37,5 +39,12 @@ export class ProfileEffects {
       )
     })
   ));
+
+  updateProfileSuccess$ = createEffect(() => this.actions$.pipe(
+    ofType(updateProfileSuccess),
+    tap(() => {
+      this.router.navigate(['/profile']);
+    })
+  ), { dispatch: false });
 }
 

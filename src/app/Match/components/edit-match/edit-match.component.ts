@@ -60,7 +60,7 @@ export class EditMatchComponent implements OnInit {
               location: matchData.location,
               homeTeamGoals: matchData.homeTeamGoals,
               awayTeamGoals: matchData.awayTeamGoals,
-              date: this.dateFormattingService.formatDateToInput(matchData.date),
+              date: this.dateFormattingService.formatDateAndHourToInput(matchData.date),
             });
           }
         })
