@@ -42,7 +42,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'team/form',
+    path: 'my-teams/create',
     component: TeamFormComponent,
     canActivate: [authGuard],
 
@@ -64,7 +64,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'league/create',
+    path: 'my-leagues/create',
     component: LeagueCreateComponent,
     canActivate: [authGuard],
   },

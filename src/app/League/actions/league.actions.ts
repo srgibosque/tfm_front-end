@@ -32,3 +32,18 @@ export const getLeagueTableFailure = createAction(
   '[LEAGUE] Get League table failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const createLeague = createAction(
+  '[LEAGUE] create league',
+  props< { name: string, location: string, teamIds: number[] } >()
+);
+
+export const createLeagueSuccess = createAction(
+  '[LEAGUE] create league success',
+  props<{ message: string }>()
+);
+
+export const createLeagueFailure = createAction(
+  '[LEAGUE] create league failure',
+  props<{ error: HttpErrorResponse }>()
+);

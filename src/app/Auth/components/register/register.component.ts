@@ -24,8 +24,7 @@ export class RegisterComponent {
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private store: Store<AppState>,
-    private router: Router
+    private store: Store<AppState>
   ) {
     this.signUpUser = new UserDTO(undefined, '', '', '', undefined, null);
 

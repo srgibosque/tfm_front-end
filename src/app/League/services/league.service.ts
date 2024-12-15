@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { League } from '../models/league.interface';
 import { LeagueTable } from '../models/league-table.interface';
+import { Team } from '../../Team/models/team.interface';
+import { Match } from '../../Match/models/match.interface';
 
 export interface LeagueResponse {
   message: string;
@@ -27,5 +29,13 @@ export class LeagueService {
 
   getLeagueTable(leagueId: string): Observable<LeagueTable> {
     return this.http.get<LeagueTable>(this.urlBlogUocApi + '/' + leagueId + '/table');
+  }
+
+  getTeamByTeamName(teamName: string): Observable<{ message: string, team: Team }> {
+    return this.http.get<{ message: string, team: Team }>(this.urlBlogUocApi + '/team/' + teamName);
+  }
+
+  createLeague(leagueData: { name: string, location: string, teamIds: number[] }): Observable<{ message: string, league: League, matches: Match[] }> {
+    return this.http.post<{ message: string, league: League, matches: Match[] }>(this.urlBlogUocApi, leagueData);
   }
 }

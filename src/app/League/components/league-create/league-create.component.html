@@ -1,1 +1,30 @@
-<p>league-create works!</p>
+<section class="vertical-medium">
+  
+  <a class="horizontal-layout" [routerLink]="['/my-leagues']">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+    </svg>
+    <button>Back to my leagues</button>
+  </a>
+
+  <h1 class="rubik-titles">Create new league</h1>
+
+  <form class="form vertical-medium" [formGroup]="createLeagueForm" (ngSubmit)="createLeague()">
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="name">League name</label>
+      <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter the name of the league" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="name">League location</label>
+      <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter league location" />
+    </div>
+
+    <div class="bottom-fixed">
+      <button type="submit" class="btn btn-primary horizontal-layout fill-content">
+        <p>Create</p>
+      </button>
+    </div>
+  </form>
+
+</section>

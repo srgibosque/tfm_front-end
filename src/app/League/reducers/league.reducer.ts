@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess } from "../actions";
+import { createLeague, createLeagueFailure, createLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess } from "../actions";
 import { League } from "../models/league.interface";
 import { LeagueTable } from "../models/league-table.interface";
 
@@ -70,5 +70,25 @@ export const leagueReducer = createReducer(
     loaded: false,
     loading: false,
     error: error,
+  })),
+
+  on(createLeague, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false
+  })),
+
+  on(createLeagueSuccess, (state, { message }) => ({
+    ...state,
+    loading: false,
+    loaded: true,
+    message: message
+  })),
+
+  on(createLeagueFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    loaded: false,
+    error: error
   })),
 );
