@@ -160,3 +160,28 @@
   box-sizing: border-box;
   text-align: center;
 }
+
+.table{
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.table-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-cell{
+  padding: 1rem 0.75rem;
+}
+
+.table-cell.first-column{
+  min-width: 32px;
+  text-align: left;
+}
+
+.table-cell.last-column{
+  min-width: 32px;
+  text-align: center;
+}

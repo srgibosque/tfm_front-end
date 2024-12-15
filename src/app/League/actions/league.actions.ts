@@ -1,19 +1,34 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 import { League } from "../models/league.interface";
-import { Match } from "../../Match/models/match.interface";
+import { LeagueTable } from "../models/league-table.interface";
 
 export const getLeague = createAction(
-  '[TEAM] Get League',
+  '[LEAGUE] Get League',
   props<{ leagueId: string }>()
 );
 
 export const getLeagueSuccess = createAction(
-  '[TEAM] Get League success',
+  '[LEAGUE] Get League success',
   props<{ message: string, league: League }>()
 );
 
 export const getLeagueFailure = createAction(
-  '[TEAM] Get League failure',
+  '[LEAGUE] Get League failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const getLeagueTable = createAction(
+  '[LEAGUE] Get League table',
+  props<{ leagueId: string }>()
+);
+
+export const getLeagueTableSuccess = createAction(
+  '[LEAGUE] Get League table success',
+  props<{ leagueTable: LeagueTable }>()
+);
+
+export const getLeagueTableFailure = createAction(
+  '[LEAGUE] Get League table failure',
   props<{ error: HttpErrorResponse }>()
 );

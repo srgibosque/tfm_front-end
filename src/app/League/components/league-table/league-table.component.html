@@ -1,1 +1,22 @@
-<p>league-table works!</p>
+<table class="table">
+  <thead>
+    <tr class="table-row">
+      <div>
+        <th class="table-cell firstcolumn rubik-secondary">Pos</th>
+        <th class="table-cell rubik-secondary">Team name</th>
+      </div>
+      <th class="table-cell last-column rubik-secondary">Pts</th>
+    </tr>
+  </thead>
+  <tbody class="rubik-regular">
+    <tr class="table-row" *ngFor="let row of (leagueTable$ | async)?.table; let i = index">
+      <ng-container *ngIf="teams$ | async as teams">
+        <div>
+          <td class="table-cell first-column rubik-secondary">{{ i + 1 }}</td>
+          <td class="table-cell">{{ row.teamId ? getTeamName(row.teamId, teams) : 'Team not defined' }}</td>
+        </div>
+        <td class="table-cell last-column">{{ row.points }}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

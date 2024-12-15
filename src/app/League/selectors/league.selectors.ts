@@ -14,8 +14,7 @@ export const selectMatches = createSelector(
   (state: LeagueState) => state.league.Matches
 );
 
-export const selectMatchById = (matchId: number) =>
-  createSelector(
-    selectMatches,
-    (matches: Match[]) => matches.find(match => match.id === matchId)
-  );
+export const selectLeagueTable = createSelector(
+  selectLeagueAppState,
+  (state: LeagueState) => state.leagueTable
+);

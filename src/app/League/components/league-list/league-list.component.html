@@ -2,7 +2,7 @@
   <h1 class="rubik-titles">My Leagues</h1>
   <ul class="vertical-medium fill-content">
     <li class="fill-content" *ngFor="let league of leagueData$ | async">
-      <a [routerLink]="['/my-leagues', league.id]">
+      <a [routerLink]="['/my-leagues', league.id, 'table']">
         <div class="card clickable-card">
           <div class="vertical-extra-small">
             <h3>{{league.name}}</h3>

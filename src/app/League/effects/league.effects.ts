@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap } from "rxjs";
-import { getLeague, getLeagueFailure, getLeagueSuccess } from "../actions";
-import { LeagueService } from "../services/team.service";
+import { getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess } from "../actions";
+import { LeagueService } from "../services/league.service";
 
 @Injectable()
 export class LeagueEffects {
@@ -11,7 +11,7 @@ export class LeagueEffects {
     private leagueService: LeagueService,
   ) { }
 
-  getTeam$ = createEffect(() => this.actions$.pipe(
+  getLeague$ = createEffect(() => this.actions$.pipe(
     ofType(getLeague),
     switchMap(({leagueId}) => {
       return this.leagueService.getLeague(leagueId).pipe(
@@ -19,6 +19,15 @@ export class LeagueEffects {
         catchError((err) => of(getLeagueFailure({ error: err })))
       )
     })
-  )
-  );
+  ));
+
+  getLeagueTable$ = createEffect(() => this.actions$.pipe(
+    ofType(getLeagueTable),
+    switchMap(({leagueId}) => {
+      return this.leagueService.getLeagueTable(leagueId).pipe(
+        map((table) => getLeagueTableSuccess({leagueTable: table})),
+        catchError((err) => of(getLeagueTableFailure({ error: err })))
+      )
+    })
+  ));
 }

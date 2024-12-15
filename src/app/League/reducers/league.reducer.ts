@@ -1,9 +1,11 @@
 import { createReducer, on } from "@ngrx/store";
-import { getLeague, getLeagueFailure, getLeagueSuccess } from "../actions";
+import { getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess } from "../actions";
 import { League } from "../models/league.interface";
+import { LeagueTable } from "../models/league-table.interface";
 
 export interface LeagueState {
   league: League;
+  leagueTable: LeagueTable
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -17,6 +19,9 @@ export const initialState: LeagueState = {
     Matches: [],
     Teams: [],
     location: '',
+  },
+  leagueTable: {
+    table: [],
   },
   loading: false,
   loaded: false,
@@ -32,7 +37,7 @@ export const leagueReducer = createReducer(
     loaded: false,
   })),
 
-  on(getLeagueSuccess, (state, {message, league}) => ({
+  on(getLeagueSuccess, (state, { message, league }) => ({
     ...state,
     loaded: true,
     loading: false,
@@ -40,7 +45,27 @@ export const leagueReducer = createReducer(
     message: message,
   })),
 
-  on(getLeagueFailure, (state, {error}) => ({
+  on(getLeagueFailure, (state, { error }) => ({
+    ...state,
+    loaded: false,
+    loading: false,
+    error: error,
+  })),
+
+  on(getLeagueTable, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false,
+  })),
+
+  on(getLeagueTableSuccess, (state, { leagueTable }) => ({
+    ...state,
+    loaded: true,
+    loading: false,
+    leagueTable: leagueTable
+  })),
+
+  on(getLeagueTableFailure, (state, { error }) => ({
     ...state,
     loaded: false,
     loading: false,
