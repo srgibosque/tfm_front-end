@@ -7,12 +7,12 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { selectMatches, selectTeams } from '../../../League/selectors/league.selectors';
 import { Team } from '../../../Team/models/team.interface';
-import { DateFormatterPipe } from '../../../Shared/pipes/date-formatter.pipe';
+import { MatchCardComponent } from '../match-card/match-card.component';
 
 @Component({
   selector: 'app-matches-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, DateFormatterPipe],
+  imports: [CommonModule, RouterModule, MatchCardComponent],
   templateUrl: './matches-list.component.html',
   styleUrl: './matches-list.component.scss'
 })
@@ -25,9 +25,5 @@ export class MatchesListComponent implements OnInit {
   ngOnInit(): void {
     this.matches$ = this.store.select(selectMatches);
     this.teams$ = this.store.select(selectTeams);
-  }
-
-  getTeamName(teamId: number, teams: Team[]): string {
-    return teams.find(team => team.id === teamId)?.name || 'Team name';
   }
 }

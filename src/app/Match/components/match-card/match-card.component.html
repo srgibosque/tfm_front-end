@@ -1,0 +1,29 @@
+<li class="match-card match-card-structure">
+  <p class="rubik-secondary fill-content center-text">
+    {{ match.date || 'Date to be defined' | dateFormatter }}
+  </p>
+  <div class="teams-score">
+    <p class="team-name-left">{{ getTeamName(match.homeTeamId) }}</p>
+    <div class="score">
+      <p class="rubik-score">
+        <ng-container *ngIf="match.homeTeamGoals !== null && match.homeTeamGoals !== undefined; else noHomeGoals">
+          {{ match.homeTeamGoals }}
+        </ng-container>
+        <ng-template #noHomeGoals>X</ng-template>
+      </p>
+
+      <p class="rubik-score">-</p>
+
+      <p class="rubik-score">
+        <ng-container *ngIf="match.awayTeamGoals !== null && match.awayTeamGoals !== undefined; else noAwayGoals">
+          {{ match.awayTeamGoals }}
+        </ng-container>
+        <ng-template #noAwayGoals>X</ng-template>
+      </p>
+    </div>
+    <p class="team-name-right">{{ getTeamName(match.awayTeamId) }}</p>
+  </div>
+  <p class="rubik-secondary">{{ match.location || 'Location to be defined' }}</p>
+  <button class="btn btn-secondary fill-content" [routerLink]="['/match/edit', match.id]">Update info</button>
+</li>
+

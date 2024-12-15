@@ -8,7 +8,7 @@
 @mixin separation($gap, $direction) {
   display: flex;
   flex-direction: $direction;
-  align-items: flex-start;
+  align-items: stretch;
   gap: $gap;
   align-self: stretch;
 }
