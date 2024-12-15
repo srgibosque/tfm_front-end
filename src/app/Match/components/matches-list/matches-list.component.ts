@@ -7,11 +7,12 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { selectMatches, selectTeams } from '../../../League/selectors/league.selectors';
 import { Team } from '../../../Team/models/team.interface';
+import { DateFormatterPipe } from '../../../Shared/pipes/date-formatter.pipe';
 
 @Component({
   selector: 'app-matches-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, DateFormatterPipe],
   templateUrl: './matches-list.component.html',
   styleUrl: './matches-list.component.scss'
 })

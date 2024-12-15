@@ -1,15 +1,27 @@
 <ul class="vertical-extra-small">
   <li class="match-card match-card-structure" *ngFor="let match of matches$ | async">
-    <p class="rubik-secondary fill-content center-text">{{match.date || 'Date to be defined'}}</p>
+    <p class="rubik-secondary fill-content center-text">{{match.date || 'Date to be defined' | dateFormatter}}</p>
     <div class="teams-score">
       <ng-container *ngIf="teams$ | async as teams">
-        <p class="center-text">{{ match.homeTeamId ? getTeamName(match.homeTeamId, teams) : 'Team not defined'  }}</p>
+        <p class="team-name-left">{{ match.homeTeamId ? getTeamName(match.homeTeamId, teams) : 'Team not defined'  }}</p>
         <div class="score">
-          <p class="rubik-score">{{ match.homeTeamGoals || 'X' }}</p>
+          <p class="rubik-score">
+            <ng-container *ngIf="match.homeTeamGoals !== null && match.homeTeamGoals !== undefined; else noHomeGoals">
+              {{ match.homeTeamGoals }}
+            </ng-container>
+            <ng-template #noHomeGoals>X</ng-template>
+          </p>
+
           <p class="rubik-score">-</p>
-          <p class="rubik-score">{{ match.awayTeamGoals || 'X' }}</p>
+
+          <p class="rubik-score">
+            <ng-container *ngIf="match.awayTeamGoals !== null && match.awayTeamGoals !== undefined; else noAwayGoals">
+              {{ match.awayTeamGoals }}
+            </ng-container>
+            <ng-template #noAwayGoals>X</ng-template>
+          </p>
         </div>
-        <p class="center-text">{{ match.awayTeamId ? getTeamName(match.awayTeamId, teams) : 'Team not defined' }}</p>
+        <p class="team-name-right">{{ match.awayTeamId ? getTeamName(match.awayTeamId, teams) : 'Team not defined' }}</p>
       </ng-container>
     </div>
     <p class="rubik-secondary">{{match.location || 'Location to be defined'}}</p>

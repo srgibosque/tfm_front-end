@@ -84,6 +84,6 @@ export class EditMatchComponent implements OnInit {
   }
 
   goToLeague() {
-    this.router.navigate(['/my-leagues', this.leagueId]);
+    this.router.navigate(['/my-leagues', this.leagueId, 'matches']);
   }
 }
