@@ -1,5 +1,5 @@
 <section class="vertical-medium">
-  
+
   <a class="horizontal-layout" [routerLink]="['/my-leagues']">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
@@ -12,11 +12,12 @@
   <form class="form vertical-medium" [formGroup]="createLeagueForm" (ngSubmit)="createLeague()">
     <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="name">League name</label>
-      <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter the name of the league" />
+      <input class="input input-structure" type="name" [formControl]="name"
+        placeholder="Enter the name of the league" />
     </div>
 
     <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="name">League location</label>
+      <label class="rubik-labels" for="location">League location</label>
       <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter league location" />
     </div>
 
@@ -25,6 +26,33 @@
         <p>Create</p>
       </button>
     </div>
+
+    <div class="vertical-extra-small">
+      <label class="rubik-labels">Teams</label>
+
+      <button type="button" class="btn btn-secondary horizontal-layout" [routerLink]="['add-team']">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z" fill="white" />
+        </svg>
+        <p>Add Team</p>
+      </button>
+  
+      <ul class="vertical-extra-small">
+        <li *ngFor="let team of teamsToAdd$ | async">
+          <div class="card clickable-card">
+            <div class="vertical-extra-small">
+              <h3>{{team.name}}</h3>
+              <p class="rubik-secondary">{{team.location}}</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+              <path d="M8 7.91L12.58 12.5L8 17.09L9.41 18.5L15.41 12.5L9.41 6.5L8 7.91Z" fill="white" />
+            </svg>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </form>
+  <router-outlet></router-outlet>
 
 </section>

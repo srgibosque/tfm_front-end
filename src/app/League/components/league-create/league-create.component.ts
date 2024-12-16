@@ -5,6 +5,9 @@ import { Store } from '@ngrx/store';
 import { createLeague } from '../../actions';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { firstValueFrom, Observable } from 'rxjs';
+import { Team } from '../../../Team/models/team.interface';
+import { selectTeamsToAdd } from '../../selectors/league.selectors';
 
 @Component({
   selector: 'app-league-create',
@@ -17,7 +20,7 @@ export class LeagueCreateComponent {
   name: FormControl;
   location: FormControl;
   createLeagueForm: FormGroup;
-
+  teamsToAdd$: Observable<Team[]>
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,19 +31,29 @@ export class LeagueCreateComponent {
 
     this.createLeagueForm = this.formBuilder.group({
       name: this.name,
-      loaction: this.location
+      location: this.location
     });
+
+    this.teamsToAdd$ = this.store.select(selectTeamsToAdd);
   }
 
-  createLeague() {
-    if(this.createLeagueForm.valid){
+  async createLeague() {
+    if (this.createLeagueForm.valid) {
       const { name, location } = this.createLeagueForm.value;
+
+      const teams = await firstValueFrom(this.teamsToAdd$);
+      const teamIds = teams
+        .map((team) => team.id)
+        .filter((id): id is number => id !== undefined);
+
       this.store.dispatch(createLeague({
         name,
         location,
-        teamIds: []
+        teamIds
       }));
+
     }
   }
-
 }
+
+

@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import {
+  addTeamToLeague,
+  addTeamToLeagueFailure,
+  addTeamToLeagueSuccess,
   createLeague,
   createLeagueFailure,
   createLeagueSuccess,
@@ -63,4 +66,20 @@ export class LeagueEffects {
       this.router.navigate(['/my-leagues']);
     })
   ), { dispatch: false });
+
+  addTeamToLeague = createEffect(() => this.actions$.pipe(
+    ofType(addTeamToLeague),
+    switchMap(({ teamName }) => {
+      return this.leagueService.getTeamByTeamName( teamName ).pipe(
+        map((response) => {
+          return addTeamToLeagueSuccess({ message: response.message, team: response.team });
+        }),
+        catchError((err) => {
+          return of( addTeamToLeagueFailure({ error: err }))
+        })
+      )
+    })
+  ));
+
+  
 }

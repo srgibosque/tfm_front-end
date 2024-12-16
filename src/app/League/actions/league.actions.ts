@@ -2,6 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
 import { League } from "../models/league.interface";
 import { LeagueTable } from "../models/league-table.interface";
+import { Team } from "../../Team/models/team.interface";
 
 export const getLeague = createAction(
   '[LEAGUE] Get League',
@@ -45,5 +46,20 @@ export const createLeagueSuccess = createAction(
 
 export const createLeagueFailure = createAction(
   '[LEAGUE] create league failure',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const addTeamToLeague = createAction(
+  '[LEAGUE] Add Team',
+  props<{ teamName: string }>()
+);
+
+export const addTeamToLeagueSuccess = createAction(
+  '[LEAGUE] Add Team Success',
+  props<{ message:string, team: Team }>()
+);
+
+export const addTeamToLeagueFailure = createAction(
+  '[LEAGUE] Add Team Failure',
   props<{ error: HttpErrorResponse }>()
 );

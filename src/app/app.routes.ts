@@ -16,6 +16,7 @@ import { MatchesListComponent } from './Match/components/matches-list/matches-li
 import { LeagueTableComponent } from './League/components/league-table/league-table.component';
 import { LeagueDetailComponent } from './League/components/league-detail/league-detail.component';
 import { authGuard } from './Auth/guards/auth-guard';
+import { AddTeamComponent } from './League/components/add-team/add-team.component';
 
 export const routes: Routes = [
   {
@@ -67,6 +68,12 @@ export const routes: Routes = [
     path: 'my-leagues/create',
     component: LeagueCreateComponent,
     canActivate: [authGuard],
+    children: [
+      {
+        path: 'add-team',
+        component: AddTeamComponent,
+      }
+    ]
   },
   {
     path: 'my-leagues/:leagueId',

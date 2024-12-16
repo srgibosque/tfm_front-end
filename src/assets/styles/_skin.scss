@@ -25,6 +25,10 @@
   @include rubik-font(1.5rem, $text-color-default , 500);
 }
 
+.rubik-subtitles {
+  @include rubik-font(1.25rem, $text-color-default , 500);
+}
+
 .rubik-buttons {
   @include rubik-font(1rem, $text-color-default , 500);
 }
@@ -106,4 +110,16 @@
 
 .bottom-fixed{
   box-shadow: 0px -4px 12px 0px rgba(0, 0, 0, 0.20);
+}
+
+//modal
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background-color: $bg-color-light;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

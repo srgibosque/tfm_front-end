@@ -18,3 +18,8 @@ export const selectLeagueTable = createSelector(
   selectLeagueAppState,
   (state: LeagueState) => state.leagueTable
 );
+
+export const selectTeamsToAdd = createSelector(
+  selectLeagueAppState,
+  (state: LeagueState) => state.teamsToAdd
+);
