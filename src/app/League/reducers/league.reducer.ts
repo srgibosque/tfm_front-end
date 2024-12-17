@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, createLeague, createLeagueFailure, createLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess } from "../actions";
+import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, createLeague, createLeagueFailure, createLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess, removeTeamToAdd } from "../actions";
 import { League } from "../models/league.interface";
 import { LeagueTable } from "../models/league-table.interface";
 import { Team } from "../../Team/models/team.interface";
@@ -115,5 +115,10 @@ export const leagueReducer = createReducer(
     loading: false,
     loaded: false,
     error: error
+  })),
+
+  on(removeTeamToAdd, (state, {teamId}) => ({
+    ...state,
+    teamsToAdd: state.teamsToAdd.filter(team => team.id !== teamId)
   })),
 );

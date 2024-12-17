@@ -32,22 +32,28 @@
 
       <button type="button" class="btn btn-secondary horizontal-layout" [routerLink]="['add-team']">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-          <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z" fill="white" />
+          <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z"
+            fill="white" />
         </svg>
         <p>Add Team</p>
       </button>
-  
+
       <ul class="vertical-extra-small">
         <li *ngFor="let team of teamsToAdd$ | async">
-          <div class="card clickable-card">
-            <div class="vertical-extra-small">
-              <h3>{{team.name}}</h3>
-              <p class="rubik-secondary">{{team.location}}</p>
+          <ng-container *ngIf="team.id">
+            <div class="card clickable-card">
+              <div class="vertical-extra-small">
+                <h3>{{team.name}}</h3>
+                <p class="rubik-secondary">{{team.location}}</p>
+              </div>
+              <button class="center-component" type="button" (click)="deleteFromTeamsToAdd(team.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
+                  <circle cx="13" cy="12.5" r="11.25" fill="#E23636" stroke="#E23636" stroke-width="2" />
+                  <path d="M7.75 12.5H18.25" stroke="white" stroke-width="4" />
+                </svg>
+              </button>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-              <path d="M8 7.91L12.58 12.5L8 17.09L9.41 18.5L15.41 12.5L9.41 6.5L8 7.91Z" fill="white" />
-            </svg>
-          </div>
+          </ng-container>
         </li>
       </ul>
     </div>

@@ -63,3 +63,8 @@ export const addTeamToLeagueFailure = createAction(
   '[LEAGUE] Add Team Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const removeTeamToAdd = createAction(
+  '[LEAGUE] Remove Team to add',
+  props<{ teamId: number }>()
+);

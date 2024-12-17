@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
-import { createLeague } from '../../actions';
+import { createLeague, removeTeamToAdd } from '../../actions';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom, Observable } from 'rxjs';
@@ -46,6 +46,7 @@ export class LeagueCreateComponent {
         .map((team) => team.id)
         .filter((id): id is number => id !== undefined);
 
+      console.log(teamIds);
       this.store.dispatch(createLeague({
         name,
         location,
@@ -53,6 +54,10 @@ export class LeagueCreateComponent {
       }));
 
     }
+  }
+
+  deleteFromTeamsToAdd(teamId: number){
+    this.store.dispatch(removeTeamToAdd({ teamId }));
   }
 }
 

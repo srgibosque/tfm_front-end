@@ -8,7 +8,10 @@
   </a>
 
   <div class="vertical-medium" *ngIf="team$ | async as team">
-    <h1 class="rubik-titles">{{ team.name }}</h1>
+    <div class="horizontal-small-center">
+      <h1 class="rubik-titles">{{ team.name }}</h1>
+      <p class="badge">{{ '@' + team.userteamname }}</p>
+    </div>
     <div class="vertical-small">
       <h3 class="rubik-labels">Team info</h3>
       <div class="card info-card">
@@ -22,7 +25,7 @@
             <p>{{ team.contact_email }}</p>
           </div>
         </div>
-  
+
         <a class="btn btn-secondary" [routerLink]="['']">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
             <path
@@ -35,7 +38,7 @@
     <div class="vertical-small">
       <h3 class="rubik-labels">Players</h3>
       <ul class="vertical-small" *ngIf="team.Users && team.Users.length > 0; else noPlayers">
-        <li class="vertical-extra-small card info-card" *ngFor="let player of team.Users"  >
+        <li class="vertical-extra-small card info-card" *ngFor="let player of team.Users">
           <h3>{{player.name}}</h3>
           <p class="rubik-secondary">{{player.gender}}</p>
         </li>
