@@ -188,7 +188,12 @@
 .btn {
   padding: 1rem 1.5rem;
   box-sizing: border-box;
-  text-align: center;
+  width: 100%;
+}
+
+.icon-btn {
+  @include center();
+  padding: 0.5rem;
 }
 
 //TABLE
@@ -242,12 +247,35 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 24px;
-  border-radius: 12px;
   max-width: 600px;
   width: 90%;
   z-index: 1000;
 }
 
+.modal-bottom {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 90%;
+  z-index: 1000;
+}
+
+.modal-bottom-content {
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .badge{
   padding: 0.5rem 0.75rem;
+}
+
+.icon-container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

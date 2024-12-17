@@ -20,7 +20,8 @@ export class LeagueCreateComponent {
   name: FormControl;
   location: FormControl;
   createLeagueForm: FormGroup;
-  teamsToAdd$: Observable<Team[]>
+  teamsToAdd$: Observable<Team[]>;
+  isMoreOptionsShown: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,

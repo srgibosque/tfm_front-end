@@ -1,0 +1,24 @@
+<div class="modal-overlay"></div>
+
+<div class="modal-bottom">
+  <div class="horizontal-small modal-bottom-content modal-bottom-title">
+    <h3 class="rubik-subtitles-secondary" *ngIf="team">{{ team.name }}</h3>
+    <h3 class="rubik-subtitles-secondary" *ngIf="league">{{ league.name }}</h3>
+    <button class="icon-btn btn-secondary" (click)="onClose()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path
+          d="M19.8105 6.59945L18.4005 5.18945L12.8105 10.7795L7.22055 5.18945L5.81055 6.59945L11.4005 12.1895L5.81055 17.7795L7.22055 19.1895L12.8105 13.5995L18.4005 19.1895L19.8105 17.7795L14.2205 12.1895L19.8105 6.59945Z"
+          fill="white" />
+      </svg>
+    </button>
+  </div>
+  <button class="horizontal-layout modal-bottom-content">
+    <div class="icon-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+        <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1V16ZM14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1Z"
+          fill="white" />
+      </svg>
+    </div>
+    <p>Delete league</p>
+  </button>
+</div>

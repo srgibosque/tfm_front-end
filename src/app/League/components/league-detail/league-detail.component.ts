@@ -6,16 +6,18 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { getLeague } from '../../actions';
 import { CommonModule } from '@angular/common';
+import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
 
 @Component({
   selector: 'app-league-detail',
   standalone: true,
-  imports: [RouterModule, RouterLinkActive, CommonModule],
+  imports: [RouterModule, RouterLinkActive, CommonModule, MoreOptionsModalComponent],
   templateUrl: './league-detail.component.html',
   styleUrl: './league-detail.component.scss'
 })
 export class LeagueDetailComponent implements OnInit{
   league$?: Observable<League>;
+  isMoreOptionsShown: boolean = false;
 
   constructor(private route: ActivatedRoute, private store: Store<AppState>){}
 
@@ -27,4 +29,7 @@ export class LeagueDetailComponent implements OnInit{
     }
   }
 
+  closeMoreOptions() {
+    this.isMoreOptionsShown = false;
+  }
 }
