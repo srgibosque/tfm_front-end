@@ -38,4 +38,8 @@ export class LeagueService {
   createLeague(leagueData: { name: string, location: string, teamIds: number[] }): Observable<{ message: string, league: League, matches: Match[] }> {
     return this.http.post<{ message: string, league: League, matches: Match[] }>(this.urlBlogUocApi, leagueData);
   }
+
+  deleteLeague(leagueId: string): Observable<{message: string}>{
+    return this.http.delete<{message: string}>(this.urlBlogUocApi + '/' + leagueId);
+  }
 }

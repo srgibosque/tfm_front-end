@@ -47,7 +47,6 @@ export class LeagueCreateComponent {
         .map((team) => team.id)
         .filter((id): id is number => id !== undefined);
 
-      console.log(teamIds);
       this.store.dispatch(createLeague({
         name,
         location,

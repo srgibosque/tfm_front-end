@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, createLeague, createLeagueFailure, createLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess, removeTeamToAdd } from "../actions";
+import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, createLeague, createLeagueFailure, createLeagueSuccess, deleteLeague, deleteLeagueFailure, deleteLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess, removeTeamToAdd } from "../actions";
 import { League } from "../models/league.interface";
 import { LeagueTable } from "../models/league-table.interface";
 import { Team } from "../../Team/models/team.interface";
@@ -117,8 +117,28 @@ export const leagueReducer = createReducer(
     error: error
   })),
 
-  on(removeTeamToAdd, (state, {teamId}) => ({
+  on(removeTeamToAdd, (state, { teamId }) => ({
     ...state,
     teamsToAdd: state.teamsToAdd.filter(team => team.id !== teamId)
+  })),
+
+  on(deleteLeague, (state, { leagueId }) => ({
+    ...state,
+    loading: true,
+    loaded: false
+  })),
+
+  on(deleteLeagueSuccess, (state, { message }) => ({
+    ...state,
+    loading: false,
+    loaded: true,
+    message: message,
+  })),
+
+  on(deleteLeagueFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    loaded: false,
+    error: error
   })),
 );

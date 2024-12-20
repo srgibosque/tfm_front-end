@@ -8,6 +8,9 @@ import {
   createLeague,
   createLeagueFailure,
   createLeagueSuccess,
+  deleteLeague,
+  deleteLeagueFailure,
+  deleteLeagueSuccess,
   getLeague,
   getLeagueFailure,
   getLeagueSuccess,
@@ -60,13 +63,6 @@ export class LeagueEffects {
     })
   ));
 
-  createLeagueSuccess = createEffect(() => this.actions$.pipe(
-    ofType(createLeagueSuccess),
-    tap(() => {
-      this.router.navigate(['/my-leagues']);
-    })
-  ), { dispatch: false });
-
   addTeamToLeague = createEffect(() => this.actions$.pipe(
     ofType(addTeamToLeague),
     switchMap(({ teamName }) => {
@@ -81,5 +77,25 @@ export class LeagueEffects {
     })
   ));
 
-  
+  deleteLeague = createEffect(() => this.actions$.pipe(
+    ofType(deleteLeague),
+    switchMap(({ leagueId }) => {
+      return this.leagueService.deleteLeague( leagueId ).pipe(
+        map((response) => {
+          return deleteLeagueSuccess({ message: response.message });
+        }),
+        catchError((err) => {
+          return of( deleteLeagueFailure({ error: err }))
+        })
+      )
+    })
+  ));
+
+  navigateToMyLeagues = createEffect(() => this.actions$.pipe(
+    ofType(createLeagueSuccess, deleteLeagueSuccess),
+    tap(() => {
+      this.router.navigate(['/my-leagues']);
+    })
+  ), { dispatch: false });
+
 }

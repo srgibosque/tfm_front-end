@@ -36,7 +36,7 @@ export const getLeagueTableFailure = createAction(
 
 export const createLeague = createAction(
   '[LEAGUE] create league',
-  props< { name: string, location: string, teamIds: number[] } >()
+  props<{ name: string, location: string, teamIds: number[] }>()
 );
 
 export const createLeagueSuccess = createAction(
@@ -56,7 +56,7 @@ export const addTeamToLeague = createAction(
 
 export const addTeamToLeagueSuccess = createAction(
   '[LEAGUE] Add Team Success',
-  props<{ message:string, team: Team }>()
+  props<{ message: string, team: Team }>()
 );
 
 export const addTeamToLeagueFailure = createAction(
@@ -67,4 +67,19 @@ export const addTeamToLeagueFailure = createAction(
 export const removeTeamToAdd = createAction(
   '[LEAGUE] Remove Team to add',
   props<{ teamId: number }>()
+);
+
+export const deleteLeague = createAction(
+  '[LEAGUE] Delete League',
+  props<{ leagueId: string }>()
+);
+
+export const deleteLeagueSuccess = createAction(
+  '[LEAGUE] Delete League success',
+  props<{ message: string }>()
+);
+
+export const deleteLeagueFailure = createAction(
+  '[LEAGUE] Delete League failure',
+  props<{ error: HttpErrorResponse }>()
 );

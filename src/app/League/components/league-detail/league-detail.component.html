@@ -42,7 +42,11 @@
   </div>
 
   <ng-container *ngIf="isMoreOptionsShown">
-    <app-more-options-modal [league]="league" (close)="closeMoreOptions()"></app-more-options-modal>
+    <app-more-options-modal 
+      [league]="league" 
+      (close)="closeMoreOptions()"
+      (delete)="deleteLeague(league.id!)">
+    </app-more-options-modal>
   </ng-container>
 
 </div>

@@ -13,10 +13,15 @@ import { Team } from '../../../Team/models/team.interface';
 })
 export class MoreOptionsModalComponent {
   @Input() team?: Team;
-  @Input() league?: League; 
+  @Input() league?: League;
   @Output() close = new EventEmitter<void>();
+  @Output() delete = new EventEmitter<void>();
 
   onClose() {
     this.close.emit();
+  }
+
+  onDelete() {
+   this.delete.emit()
   }
 }
