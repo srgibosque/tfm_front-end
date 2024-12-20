@@ -27,6 +27,6 @@ export class MoreOptionsModalComponent {
   }
 
   onEdit() {
-    this.delete.emit();
+    this.edit.emit();
    }
 }

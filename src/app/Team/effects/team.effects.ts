@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import { TeamService } from "../services/team.service";
-import { addPlayerToTeam, addPlayerToTeamFailure, addPlayerToTeamSuccess, createTeam, createTeamFailure, createTeamSuccess, deleteTeam, deleteTeamFailure, deleteTeamSuccess, getTeam, getTeamFailure, getTeamSuccess } from "../actions";
+import { addPlayerToTeam, addPlayerToTeamFailure, addPlayerToTeamSuccess, createTeam, createTeamFailure, createTeamSuccess, deleteTeam, deleteTeamFailure, deleteTeamSuccess, getTeam, getTeamFailure, getTeamSuccess, updateTeam, updateTeamFailure, updateTeamSuccess } from "../actions";
 import { Router } from "@angular/router";
 
 @Injectable()
@@ -65,8 +65,23 @@ export class TeamEffects {
     })
   ));
 
+  updateTeam = createEffect(() => this.actions$.pipe(
+    ofType(updateTeam),
+    switchMap(({ teamId, name, contactEmail, location, userIds }) => {
+      return this.teamService.updateTeam(teamId, { name, contactEmail, location, userIds }).pipe(
+        map(({ message, team }) => {
+          return updateTeamSuccess({ message, team })
+        }),
+
+        catchError((err) => {
+          return of(updateTeamFailure({ error: err }))
+        })
+      )
+    })
+  ));
+
   navigateToMyLeagues = createEffect(() => this.actions$.pipe(
-    ofType(createTeamSuccess, deleteTeamSuccess),
+    ofType(createTeamSuccess, deleteTeamSuccess, updateTeamSuccess),
     tap(() => {
       this.router.navigate(['/my-teams']);
     })

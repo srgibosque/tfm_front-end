@@ -43,7 +43,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'my-teams/create',
+    path: 'my-teams/team-form',
     component: TeamFormComponent,
     canActivate: [authGuard],
 

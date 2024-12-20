@@ -3,7 +3,7 @@ import { User } from "../../Profile/models/user.interface";
 export interface Team {
   id: number | undefined;
   name: string;
-  contact_email: string;
+  contactEmail: string;
   Users: User[];
   location: string;
   userteamname: string;

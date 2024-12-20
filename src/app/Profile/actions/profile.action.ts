@@ -21,7 +21,7 @@ export const updateProfile = createAction(
 
 export const updateProfileSuccess = createAction(
   '[PROFILE] Update Profile Success',
-  props<{ message: string, user: { name: string, email: string, gender: string, birthdate: string |null } }>()
+  props<{ message: string, user: { name: string, email: string, gender: string, birthdate: string | null } }>()
 );
 
 export const updateProfileFailure = createAction(

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Team } from '../../models/team.interface';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { deleteTeam, getTeam } from '../../actions';
@@ -19,7 +19,11 @@ export class TeamDetailComponent implements OnInit {
   team$?: Observable<Team>;
   isMoreOptionsShown: boolean = false;
 
-  constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
     const teamId = this.route.snapshot.paramMap.get('teamId');
@@ -38,5 +42,14 @@ export class TeamDetailComponent implements OnInit {
       const teamId = id.toString();
       this.store.dispatch(deleteTeam({ teamId }));
     }
+  }
+
+  updateTeam(team: Team) {
+    this.router.navigate(['/my-teams/team-form'], {
+      queryParams: {
+        isEditMode: true,
+        ...team
+      }
+    })
   }
 }

@@ -1,7 +1,7 @@
 import { User } from './../../Profile/models/user.interface';
 import { createReducer, on } from "@ngrx/store";
 import { Team } from "../models/team.interface";
-import { addPlayerToTeam, addPlayerToTeamFailure, addPlayerToTeamSuccess, createTeam, createTeamFailure, createTeamSuccess, deleteTeam, deleteTeamFailure, deleteTeamSuccess, getTeam, getTeamFailure, getTeamSuccess, removePlayerToAdd } from "../actions";
+import { addPlayerToTeam, addPlayerToTeamFailure, addPlayerToTeamSuccess, createTeam, createTeamFailure, createTeamSuccess, deleteTeam, deleteTeamFailure, deleteTeamSuccess, getTeam, getTeamFailure, getTeamSuccess, removePlayerToAdd, updateTeam, updateTeamFailure, updateTeamSuccess } from "../actions";
 
 export interface TeamState {
   team: Team;
@@ -16,7 +16,7 @@ export const initialState: TeamState = {
   team: {
     id: undefined,
     name: '',
-    contact_email: '',
+    contactEmail: '',
     Users: [],
     location: '',
     userteamname: '',
@@ -112,6 +112,26 @@ export const teamReducer = createReducer(
     })),
   
     on(deleteTeamFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      loaded: false,
+      error: error
+    })),
+
+    on(updateTeam, (state, { teamId, name, contactEmail, location, userIds }) => ({
+      ...state,
+      loading: true,
+      loaded: false
+    })),
+
+    on(updateTeamSuccess, (state, { message, team }) => ({
+      ...state,
+      loading: false,
+      loaded: true,
+      message: message,
+    })),
+
+    on(updateTeamFailure, (state, { error }) => ({
       ...state,
       loading: false,
       loaded: false,

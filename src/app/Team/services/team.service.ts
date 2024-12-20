@@ -29,18 +29,25 @@ export class TeamService {
     return this.http.get<{ message: string, user: User }>(this.urlBlogUocApi + '/player/' + email);
   }
 
-  createTeam(teamData: { 
-    name: string, 
-    userTeamName: string, 
-    location: string, 
-    contactEmail: string, 
-    userIds: number[] 
+  createTeam(teamData: {
+    name: string,
+    userTeamName: string,
+    location: string,
+    contactEmail: string,
+    userIds: number[]
   }): Observable<{ message: string, team: Team }> {
     return this.http.post<{ message: string, team: Team }>(this.urlBlogUocApi, teamData);
   }
 
   deleteTeam(teamId: string): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(this.urlBlogUocApi + '/' + teamId);
+  }
+
+  updateTeam(
+    teamId: string,
+    updatedTeam: { name: string, contactEmail: string, location: string, userIds: number[] }
+  ): Observable<{ message: string, team: Team }> {
+    return this.http.put<{ message: string, team: Team }>(this.urlBlogUocApi + '/' + teamId, updatedTeam);
   }
 
 }

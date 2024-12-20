@@ -28,7 +28,7 @@
           </div>
           <div class="vertical-extra-small">
             <h3 class="rubik-labels">Contact info</h3>
-            <p>{{ team.contact_email }}</p>
+            <p>{{ team.contactEmail }}</p>
           </div>
         </div>
       </div>
@@ -52,7 +52,8 @@
     <app-more-options-modal 
       [team]="team" 
       (close)="closeMoreOptions()"
-      (delete)="deleteTeam(team.id!)">
+      (delete)="deleteTeam(team.id!)"
+      (edit)="updateTeam(team)">
     </app-more-options-modal>
   </ng-container>
 

@@ -24,7 +24,7 @@ export class ProfileEffects {
     })
   ));
 
-  updateProdile$ = createEffect(() => this.actions$.pipe(
+  updateProfile$ = createEffect(() => this.actions$.pipe(
     ofType(updateProfile),
     switchMap(({ name, email, gender, birthdate }) => {
       const updatedUser: User = { name, email, gender, birthdate }

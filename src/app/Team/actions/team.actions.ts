@@ -67,3 +67,18 @@ export const deleteTeamFailure = createAction(
   '[TEAM] Delete Team failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const updateTeam = createAction(
+  '[PROFILE] Update Team',
+  props<{ teamId: string, name: string, contactEmail: string, location: string, userIds: number[] }>()
+);
+
+export const updateTeamSuccess = createAction(
+  '[PROFILE] Update Team Success',
+  props<{ message: string, team: Team }>()
+);
+
+export const updateTeamFailure = createAction(
+  '[PROFILE] Update Team Failure',
+  props<{ error: HttpErrorResponse }>()
+);
