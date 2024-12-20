@@ -1,9 +1,11 @@
+import { User } from './../../Profile/models/user.interface';
 import { createReducer, on } from "@ngrx/store";
 import { Team } from "../models/team.interface";
-import { getTeam, getTeamFailure, getTeamSuccess } from "../actions";
+import { addPlayerToTeam, addPlayerToTeamFailure, addPlayerToTeamSuccess, createTeam, createTeamFailure, createTeamSuccess, deleteTeam, deleteTeamFailure, deleteTeamSuccess, getTeam, getTeamFailure, getTeamSuccess, removePlayerToAdd } from "../actions";
 
 export interface TeamState {
   team: Team;
+  playersToAdd: User[];
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -19,6 +21,7 @@ export const initialState: TeamState = {
     location: '',
     userteamname: '',
   },
+  playersToAdd: [],
   loading: false,
   loaded: false,
   error: null,
@@ -47,4 +50,71 @@ export const teamReducer = createReducer(
     loading: false,
     error: error,
   })),
+
+   on(createTeam, (state) => ({
+      ...state,
+      loading: true,
+      loaded: false
+    })),
+  
+    on(createTeamSuccess, (state, { message }) => ({
+      ...state,
+      loading: false,
+      loaded: true,
+      message: message,
+      teamsToAdd: [],
+    })),
+  
+    on(createTeamFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      loaded: false,
+      error: error
+    })),
+  
+    on(addPlayerToTeam, (state) => ({
+      ...state,
+      loading: true,
+      loaded: false
+    })),
+  
+    on(addPlayerToTeamSuccess, (state, { message, user }) => ({
+      ...state,
+      loading: false,
+      loaded: true,
+      message: message,
+      playersToAdd: [...state.playersToAdd, user],
+    })),
+  
+    on(addPlayerToTeamFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      loaded: false,
+      error: error
+    })),
+  
+    on(removePlayerToAdd, (state, { playerId }) => ({
+      ...state,
+      playersToAdd: state.playersToAdd.filter(player => player.id !== playerId)
+    })),
+  
+    on(deleteTeam, (state, { teamId }) => ({
+      ...state,
+      loading: true,
+      loaded: false
+    })),
+  
+    on(deleteTeamSuccess, (state, { message }) => ({
+      ...state,
+      loading: false,
+      loaded: true,
+      message: message,
+    })),
+  
+    on(deleteTeamFailure, (state, { error }) => ({
+      ...state,
+      loading: false,
+      loaded: false,
+      error: error
+    })),
 );

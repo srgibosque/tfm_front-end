@@ -16,12 +16,17 @@ export class MoreOptionsModalComponent {
   @Input() league?: League;
   @Output() close = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
+  @Output() edit = new EventEmitter<void>();
 
   onClose() {
     this.close.emit();
   }
 
   onDelete() {
-   this.delete.emit()
+   this.delete.emit();
   }
+
+  onEdit() {
+    this.delete.emit();
+   }
 }

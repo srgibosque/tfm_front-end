@@ -4,26 +4,39 @@ import { Team } from '../../models/team.interface';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
-import { getTeam } from '../../actions';
+import { deleteTeam, getTeam } from '../../actions';
 import { CommonModule } from '@angular/common';
+import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
 
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MoreOptionsModalComponent],
   templateUrl: './team-detail.component.html',
   styleUrl: './team-detail.component.scss'
 })
 export class TeamDetailComponent implements OnInit {
   team$?: Observable<Team>;
+  isMoreOptionsShown: boolean = false;
 
-  constructor(private route: ActivatedRoute, private store: Store<AppState>) {}
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
 
-  ngOnInit():  void {
+  ngOnInit(): void {
     const teamId = this.route.snapshot.paramMap.get('teamId');
     if (teamId) {
-      this.store.dispatch(getTeam({teamId}));
+      this.store.dispatch(getTeam({ teamId }));
       this.team$ = this.store.select((state) => state.teamApp.team);
+    }
+  }
+
+  closeMoreOptions() {
+    this.isMoreOptionsShown = false;
+  }
+
+  deleteTeam(id: number) {
+    if (id) {
+      const teamId = id.toString();
+      this.store.dispatch(deleteTeam({ teamId }));
     }
   }
 }

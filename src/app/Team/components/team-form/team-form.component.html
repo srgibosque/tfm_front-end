@@ -1,1 +1,77 @@
-<p>team-form works!</p>
+<section class="vertical-medium">
+
+  <a class="horizontal-layout" [routerLink]="['/my-teams']">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+    </svg>
+    <button>Back to my Teams</button>
+  </a>
+
+
+  <h1 class="rubik-titles">Create new Team</h1>
+
+  <form class="form vertical-medium" [formGroup]="createTeamForm" (ngSubmit)="createTeam()">
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="name">Name</label>
+      <input class="input input-structure" type="name" [formControl]="name"
+        placeholder="Enter the name of the team" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="userTeamName">Team unique identifier</label>
+      <input class="input input-structure" type="name" [formControl]="userTeamName"
+        placeholder="Enter a unique identifier for the team" />
+    </div>
+    
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="contactInfo">Contact info</label>
+      <input class="input input-structure" type="name" [formControl]="contactEmail"
+        placeholder="Enter the contact email" />
+    </div>
+
+    <div class="form-control vertical-extra-small">
+      <label class="rubik-labels" for="location">Team location</label>
+      <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter team location" />
+    </div>
+
+    <div class="bottom-fixed">
+      <button type="submit" class="btn btn-primary horizontal-layout fill-content">
+        <p>Create</p>
+      </button>
+    </div>
+
+    <div class="vertical-extra-small">
+      <label class="rubik-labels">Players</label>
+
+      <button type="button" class="btn btn-secondary horizontal-layout" [routerLink]="['add-player']">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z"
+            fill="white" />
+        </svg>
+        <p>Add player</p>
+      </button>
+
+      <ul class="vertical-extra-small">
+        <li *ngFor="let player of playersToAdd$ | async">
+          <ng-container *ngIf="player.id">
+            <div class="card clickable-card">
+              <div class="vertical-extra-small">
+                <h3>{{player.name}}</h3>
+                <p class="rubik-secondary">{{player.email}}</p>
+              </div>
+              <button class="center-component" type="button" (click)="deleteFromPlayersToAdd(player.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
+                  <circle cx="13" cy="12.5" r="11.25" fill="#E23636" stroke="#E23636" stroke-width="2" />
+                  <path d="M7.75 12.5H18.25" stroke="white" stroke-width="4" />
+                </svg>
+              </button>
+            </div>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+
+  </form>
+  <router-outlet></router-outlet>
+
+</section>

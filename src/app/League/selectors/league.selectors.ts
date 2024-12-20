@@ -1,6 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { LeagueState } from "../reducers";
-import { Match } from "../../Match/models/match.interface";
 
 export const selectLeagueAppState = createFeatureSelector<LeagueState>('leagueApp');
 

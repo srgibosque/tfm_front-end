@@ -1,13 +1,19 @@
-<div class="vertical-medium">
+<div class="vertical-medium" *ngIf="team$ | async as team">
+  <div class="horizontal-small-center">
+    <a class="horizontal-layout" [routerLink]="['/my-teams']">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
+      </svg>
+      <button>Back to my teams</button>
+    </a>
+    <button type="button" (click)="isMoreOptionsShown = true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M14 18C14 18.5304 13.7893 19.0391 13.4142 19.4142C13.0391 19.7893 12.5304 20 12 20C11.4696 20 10.9609 19.7893 10.5858 19.4142C10.2107 19.0391 10 18.5304 10 18C10 17.4696 10.2107 16.9609 10.5858 16.5858C10.9609 16.2107 11.4696 16 12 16C12.5304 16 13.0391 16.2107 13.4142 16.5858C13.7893 16.9609 14 17.4696 14 18ZM14 12C14 12.5304 13.7893 13.0391 13.4142 13.4142C13.0391 13.7893 12.5304 14 12 14C11.4696 14 10.9609 13.7893 10.5858 13.4142C10.2107 13.0391 10 12.5304 10 12C10 11.4696 10.2107 10.9609 10.5858 10.5858C10.9609 10.2107 11.4696 10 12 10C12.5304 10 13.0391 10.2107 13.4142 10.5858C13.7893 10.9609 14 11.4696 14 12ZM12 8C12.5304 8 13.0391 7.78929 13.4142 7.41421C13.7893 7.03914 14 6.53043 14 6C14 5.46957 13.7893 4.96086 13.4142 4.58579C13.0391 4.21071 12.5304 4 12 4C11.4696 4 10.9609 4.21071 10.5858 4.58579C10.2107 4.96086 10 5.46957 10 6C10 6.53043 10.2107 7.03914 10.5858 7.41421C10.9609 7.78929 11.4696 8 12 8Z" fill="white"/>
+        </svg>
+    </button>
+  </div>
 
-  <a class="horizontal-layout" [routerLink]="['/my-teams']">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L7.99995 12L14 18L15.41 16.59Z" fill="white" />
-    </svg>
-    <button>Back to my teams</button>
-  </a>
-
-  <div class="vertical-medium" *ngIf="team$ | async as team">
+  <div class="vertical-medium">
     <div class="horizontal-small-center">
       <h1 class="rubik-titles">{{ team.name }}</h1>
       <p class="badge">{{ '@' + team.userteamname }}</p>
@@ -25,14 +31,6 @@
             <p>{{ team.contact_email }}</p>
           </div>
         </div>
-
-        <a class="btn btn-secondary" [routerLink]="['']">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-            <path
-              d="M10.0535 19.1864L21.8105 19.1864L21.8105 21.1864L3.81049 21.1864L3.81049 16.9434L13.7105 7.04336L17.9525 11.2864L10.0535 19.1864ZM15.1235 5.62936L17.2455 3.50836C17.433 3.32089 17.6873 3.21558 17.9525 3.21558C18.2177 3.21558 18.472 3.32089 18.6595 3.50836L21.4885 6.33636C21.5815 6.42924 21.6552 6.53952 21.7055 6.66092C21.7559 6.78232 21.7818 6.91245 21.7818 7.04386C21.7818 7.17528 21.7559 7.30541 21.7055 7.4268C21.6552 7.5482 21.5815 7.65849 21.4885 7.75136L19.3665 9.87236L15.1235 5.62936Z"
-              fill="white" />
-          </svg>
-        </a>
       </div>
     </div>
     <div class="vertical-small">
@@ -50,5 +48,12 @@
     </div>
   </div>
 
+  <ng-container *ngIf="isMoreOptionsShown">
+    <app-more-options-modal 
+      [team]="team" 
+      (close)="closeMoreOptions()"
+      (delete)="deleteTeam(team.id!)">
+    </app-more-options-modal>
+  </ng-container>
 
 </div>

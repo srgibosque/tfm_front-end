@@ -1,1 +1,26 @@
-<p>add-player works!</p>
+<div class="modal-overlay"></div>
+
+<div class="modal vertical-medium">
+  <div class="horizontal-small">
+    <h3 class="rubik-subtitles">Add Player</h3>
+    <button class="icon-btn btn-secondary" [routerLink]="['../']">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path
+          d="M19.8105 6.59945L18.4005 5.18945L12.8105 10.7795L7.22055 5.18945L5.81055 6.59945L11.4005 12.1895L5.81055 17.7795L7.22055 19.1895L12.8105 13.5995L18.4005 19.1895L19.8105 17.7795L14.2205 12.1895L19.8105 6.59945Z"
+          fill="white" />
+      </svg>
+    </button>
+  </div>
+  <form class="vertical-medium" [formGroup]="addPlayerForm" (ngSubmit)="onSubmit()">
+    <div class="form-control vertical-extra-small">
+      <input class="input input-structure" [formControl]="email" type="name" placeholder="Enter player email" />
+    </div>
+
+    <button class="btn btn-primary horizontal-layout" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z" fill="white" />
+      </svg>
+      <p>Add</p>
+    </button>
+  </form>
+</div>
