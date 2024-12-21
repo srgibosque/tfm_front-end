@@ -20,8 +20,8 @@ export class TeamDetailComponent implements OnInit {
   isMoreOptionsShown: boolean = false;
 
   constructor(
-    private router: Router, 
-    private route: ActivatedRoute, 
+    private router: Router,
+    private route: ActivatedRoute,
     private store: Store<AppState>
   ) { }
 
@@ -48,7 +48,8 @@ export class TeamDetailComponent implements OnInit {
     this.router.navigate(['/my-teams/team-form'], {
       queryParams: {
         isEditMode: true,
-        ...team
+        ...team,
+        players: JSON.stringify(team.Users)
       }
     })
   }

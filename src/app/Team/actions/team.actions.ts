@@ -48,6 +48,11 @@ export const addPlayerToTeamFailure = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+export const loadPlayersToAdd = createAction(
+  '[TeamForm] Load Players to Add',
+  props<{ players: User[] }>()
+);
+
 export const removePlayerToAdd = createAction(
   '[TEAM] Remove player to add',
   props<{ playerId: number }>()

@@ -8,12 +8,15 @@
   </a>
 
 
-  <h1 class="rubik-titles">Create new Team</h1>
+  <h1 class="rubik-titles">{{ isEditMode ? 'Update team' : 'Create new team' }}</h1>
 
-  <form class="form vertical-medium" [formGroup]="createTeamForm" (ngSubmit)="createTeam()">
+  <form class="form vertical-medium" [formGroup]="createTeamForm" (ngSubmit)="submitForm()">
     <div class="form-control vertical-extra-small">
       <label class="rubik-labels" for="name">Name</label>
-      <input class="input input-structure" type="name" [formControl]="name"
+      <input 
+        class="input input-structure" 
+        type="name" 
+        [formControl]="name"
         placeholder="Enter the name of the team" />
     </div>
 
@@ -36,14 +39,17 @@
 
     <div class="bottom-fixed">
       <button type="submit" class="btn btn-primary horizontal-layout fill-content">
-        <p>Create</p>
+        <p>{{ isEditMode ? 'Update' : 'Create' }}</p>
       </button>
     </div>
 
     <div class="vertical-extra-small">
       <label class="rubik-labels">Players</label>
 
-      <button type="button" class="btn btn-secondary horizontal-layout" [routerLink]="['add-player']">
+      <button 
+        type="button" 
+        class="btn btn-secondary horizontal-layout" 
+        (click)="navigateToAddPlayer()">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
           <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z"
             fill="white" />
