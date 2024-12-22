@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.reducer';
 import { autoLogin } from './Auth/actions';
 import { Observable } from 'rxjs';
-import { selectIsLoading } from './Shared/selectors/shared.selector';
+import { selectGlobalError, selectGlobalMessage, selectIsLoading } from './Shared/selectors/shared.selector';
 import { NavBarComponent } from './Shared/components/nav-bar/nav-bar.component';
 import { SpinnerComponent } from './Shared/components/spinner/spinner.component';
+import { ToastComponent } from './Shared/components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavBarComponent, SpinnerComponent],
+  imports: [CommonModule, RouterOutlet, NavBarComponent, SpinnerComponent, ToastComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   title = 'Front-end';
   isLoading$!: Observable<boolean>;
+  message$!: Observable<string | null>;
+  error$!: Observable<string | null>;
 
   constructor(
     private store: Store<AppState>
@@ -27,5 +31,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(autoLogin());
     this.isLoading$ = this.store.select(selectIsLoading);
+    this.message$ = this.store.select(selectGlobalMessage);
+    this.error$ = this.store.select(selectGlobalError);
   };
 }

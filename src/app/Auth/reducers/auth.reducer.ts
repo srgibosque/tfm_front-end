@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
+import { clearError, clearMessage, login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
 
 export interface Credentials {
   userId: number | null;
@@ -76,6 +76,10 @@ export const authReducer = createReducer(
     loading: false,
     loaded: false,
     credentials: { userId: null, token: null },
-    message: null
+    message: 'Logout successful'
   })),
+
+  //CLEAR MESSAGES AND ERRORS
+  on(clearMessage, (state) => ({ ...state, message: null })),
+  on(clearError, (state) => ({ ...state, error: null }))
 );

@@ -17,3 +17,18 @@ export const selectIsLoading = createSelector(
   (authLoading, profileLoading, teamLoading, leagueLoading, matchLoading) => 
     authLoading || profileLoading || teamLoading || leagueLoading || matchLoading
 );
+
+const selectAuthMessage = (state: AppState) => state.authApp.message;
+const selectAuthError = (state: AppState) =>  state.authApp.error ? state.authApp.error.error?.message : null;
+
+export const selectGlobalMessage = createSelector(
+  selectAuthMessage,
+  // Add other reducers' messages here
+  (authMessage) => authMessage
+);
+
+export const selectGlobalError = createSelector(
+  selectAuthError,
+  // Add other reducers' errors here
+  (authError) => authError
+);

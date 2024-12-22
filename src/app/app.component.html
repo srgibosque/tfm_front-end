@@ -5,3 +5,4 @@
   <app-spinner *ngIf="isLoading$ | async"></app-spinner>
   <router-outlet />
 </main>
+<app-toast [message]="(message$ | async) || (error$ | async)"></app-toast>

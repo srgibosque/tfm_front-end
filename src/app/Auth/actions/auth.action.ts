@@ -39,3 +39,11 @@ export const signupFailure = createAction(
 export const logout = createAction(
   '[AUTH] Logout'
 );
+
+// CLEAR Message and error
+export const clearMessage = createAction(
+  '[AUTH] Clear Message'
+);
+export const clearError = createAction(
+  '[AUTH] Clear Message'
+);
