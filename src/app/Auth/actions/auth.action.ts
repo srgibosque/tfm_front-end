@@ -45,5 +45,5 @@ export const clearMessage = createAction(
   '[AUTH] Clear Message'
 );
 export const clearError = createAction(
-  '[AUTH] Clear Message'
+  '[AUTH] Clear Error'
 );

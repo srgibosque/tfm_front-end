@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, createLeague, createLeagueFailure, createLeagueSuccess, deleteLeague, deleteLeagueFailure, deleteLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess, removeTeamToAdd } from "../actions";
+import { addTeamToLeague, addTeamToLeagueFailure, addTeamToLeagueSuccess, clearError, clearMessage, createLeague, createLeagueFailure, createLeagueSuccess, deleteLeague, deleteLeagueFailure, deleteLeagueSuccess, getLeague, getLeagueFailure, getLeagueSuccess, getLeagueTable, getLeagueTableFailure, getLeagueTableSuccess, removeTeamToAdd } from "../actions";
 import { League } from "../models/league.interface";
 import { LeagueTable } from "../models/league-table.interface";
 import { Team } from "../../Team/models/team.interface";
@@ -45,7 +45,6 @@ export const leagueReducer = createReducer(
     loaded: true,
     loading: false,
     league: league,
-    message: message,
   })),
 
   on(getLeagueFailure, (state, { error }) => ({
@@ -141,4 +140,8 @@ export const leagueReducer = createReducer(
     loaded: false,
     error: error
   })),
+
+  //CLEAR MESSAGES AND ERRORS
+  on(clearMessage, (state) => ({ ...state, message: null })),
+  on(clearError, (state) => ({ ...state, error: null }))
 );

@@ -31,3 +31,11 @@ export const updateMatchFailure = createAction(
   '[MATCH] Update match failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+// CLEAR Message and error
+export const clearMessage = createAction(
+  '[MATCH] Clear Message'
+);
+export const clearError = createAction(
+  '[MATCH] Clear Error'
+);

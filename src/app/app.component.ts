@@ -21,8 +21,6 @@ import { ToastComponent } from './Shared/components/toast/toast.component';
 export class AppComponent implements OnInit {
   title = 'Front-end';
   isLoading$!: Observable<boolean>;
-  message$!: Observable<string | null>;
-  error$!: Observable<string | null>;
 
   constructor(
     private store: Store<AppState>
@@ -31,7 +29,5 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(autoLogin());
     this.isLoading$ = this.store.select(selectIsLoading);
-    this.message$ = this.store.select(selectGlobalMessage);
-    this.error$ = this.store.select(selectGlobalError);
   };
 }

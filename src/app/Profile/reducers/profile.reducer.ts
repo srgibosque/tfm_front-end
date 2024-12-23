@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { getProfile, getProfileFailure, getProfileSuccess, updateProfile, updateProfileFailure, updateProfileSuccess } from "../actions";
+import { clearError, clearMessage, getProfile, getProfileFailure, getProfileSuccess, updateProfile, updateProfileFailure, updateProfileSuccess } from "../actions";
 import { Profile } from '../services/profile.service';
 
 export interface ProfileState {
@@ -92,5 +92,9 @@ export const profileReducer = createReducer(
     loaded: false,
     loading: false,
     error: error,
-  }))
+  })),
+
+    //CLEAR MESSAGES AND ERRORS
+    on(clearMessage, (state) => ({ ...state, message: null })),
+    on(clearError, (state) => ({ ...state, error: null }))
 );

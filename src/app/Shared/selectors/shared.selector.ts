@@ -21,14 +21,35 @@ export const selectIsLoading = createSelector(
 const selectAuthMessage = (state: AppState) => state.authApp.message;
 const selectAuthError = (state: AppState) =>  state.authApp.error ? state.authApp.error.error?.message : null;
 
+const selectProfileMessage = (state: AppState) => state.profileApp.message;
+const selectProfileError = (state: AppState) =>  state.profileApp.error ? state.profileApp.error.error?.message : null;
+
+const selectTeamMessage = (state: AppState) => state.teamApp.message;
+const selectTeamError = (state: AppState) =>  state.teamApp.error ? state.teamApp.error.error?.message : null;
+
+const selectLeagueMessage = (state: AppState) => state.leagueApp.message;
+const selectLeagueError = (state: AppState) =>  state.leagueApp.error ? state.leagueApp.error.error?.message : null;
+
+const selectMatchMessage = (state: AppState) => state.matchApp.message;
+const selectMatchError = (state: AppState) =>  state.matchApp.error ? state.matchApp.error.error?.message : null;
+
+
 export const selectGlobalMessage = createSelector(
   selectAuthMessage,
-  // Add other reducers' messages here
-  (authMessage) => authMessage
+  selectProfileMessage,
+  selectTeamMessage,
+  selectLeagueMessage,
+  selectMatchMessage,
+  (authMessage, profileMessage, teamMessage, leagueMessage, matchMessage) => 
+    authMessage || profileMessage || teamMessage || leagueMessage || matchMessage
 );
 
 export const selectGlobalError = createSelector(
   selectAuthError,
-  // Add other reducers' errors here
-  (authError) => authError
+  selectProfileError,
+  selectTeamError,
+  selectLeagueError,
+  selectMatchError,
+  (authError, profileError, teamError, leagueError, matchError) => 
+    authError || profileError || teamError || leagueError || matchError
 );

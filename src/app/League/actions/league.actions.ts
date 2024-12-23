@@ -83,3 +83,11 @@ export const deleteLeagueFailure = createAction(
   '[LEAGUE] Delete League failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+// CLEAR Message and error
+export const clearMessage = createAction(
+  '[LEAGUE] Clear Message'
+);
+export const clearError = createAction(
+  '[LEAGUE] Clear Error'
+);

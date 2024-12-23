@@ -87,3 +87,11 @@ export const updateTeamFailure = createAction(
   '[PROFILE] Update Team Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+// CLEAR Message and error
+export const clearMessage = createAction(
+  '[TEAM] Clear Message'
+);
+export const clearError = createAction(
+  '[TEAM] Clear Error'
+);

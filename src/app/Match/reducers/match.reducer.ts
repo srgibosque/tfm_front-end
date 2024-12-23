@@ -1,11 +1,13 @@
 import { createReducer, on } from "@ngrx/store";
-import { 
-  getMatch, 
-  getMatchFailure, 
-  getMatchSuccess, 
-  updateMatch, 
-  updateMatchFailure, 
-  updateMatchSuccess 
+import {
+  clearError,
+  clearMessage,
+  getMatch,
+  getMatchFailure,
+  getMatchSuccess,
+  updateMatch,
+  updateMatchFailure,
+  updateMatchSuccess
 } from "../../Match/actions";
 import { Match } from "../models/match.interface";
 
@@ -42,15 +44,14 @@ export const matchReducer = createReducer(
     loaded: false,
   })),
 
-  on(getMatchSuccess, (state, {message, match}) => ({
+  on(getMatchSuccess, (state, { message, match }) => ({
     ...state,
     match: match,
     loaded: true,
-    loading: false,
-    message: message,
+    loading: false
   })),
 
-  on(getMatchFailure, (state, {error}) => ({
+  on(getMatchFailure, (state, { error }) => ({
     ...state,
     loaded: false,
     loading: false,
@@ -75,10 +76,14 @@ export const matchReducer = createReducer(
     message: message,
   })),
 
-  on(updateMatchFailure, (state, {error}) => ({
+  on(updateMatchFailure, (state, { error }) => ({
     ...state,
     loaded: false,
     loading: false,
     error: error,
-  }))
+  })),
+
+  //CLEAR MESSAGES AND ERRORS
+  on(clearMessage, (state) => ({ ...state, message: null })),
+  on(clearError, (state) => ({ ...state, error: null }))
 );

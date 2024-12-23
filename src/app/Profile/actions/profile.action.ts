@@ -28,3 +28,11 @@ export const updateProfileFailure = createAction(
   '[PROFILE] Update Profile Failure',
   props<{ error: HttpErrorResponse }>()
 );
+
+// CLEAR Message and error
+export const clearMessage = createAction(
+  '[PROFILE] Clear Message'
+);
+export const clearError = createAction(
+  '[PROFILE] Clear Error'
+);
