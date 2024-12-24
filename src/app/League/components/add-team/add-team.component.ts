@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { addTeamToLeague } from '../../actions';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-add-team',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormControlComponent],
   templateUrl: './add-team.component.html',
   styleUrl: './add-team.component.scss'
 })

@@ -8,11 +8,12 @@ import { CommonModule } from '@angular/common';
 import { firstValueFrom, Observable } from 'rxjs';
 import { Team } from '../../../Team/models/team.interface';
 import { selectTeamsToAdd } from '../../selectors/league.selectors';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-league-create',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent],
   templateUrl: './league-create.component.html',
   styleUrl: './league-create.component.scss'
 })
@@ -28,7 +29,7 @@ export class LeagueCreateComponent {
     private store: Store<AppState>
   ) {
     this.name = new FormControl('', [Validators.required]);
-    this.location = new FormControl('', [Validators.required]);
+    this.location = new FormControl('', [Validators.required, Validators.maxLength(80)]);
 
     this.createLeagueForm = this.formBuilder.group({
       name: this.name,

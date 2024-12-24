@@ -12,9 +12,13 @@
     </button>
   </div>
   <form class="vertical-medium" [formGroup]="addTeamForm" (ngSubmit)="onSubmit()">
-    <div class="form-control vertical-extra-small">
-      <input class="input input-structure" [formControl]="teamName" type="name" placeholder="Enter team username" />
-    </div>
+
+    <app-form-control
+      [control]="teamName"
+      label="Team name"
+      type="text"
+      placeholder="Enter team's username"
+    ></app-form-control>
 
     <button class="btn btn-primary horizontal-layout" type="submit">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">

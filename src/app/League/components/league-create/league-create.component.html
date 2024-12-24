@@ -11,19 +11,22 @@
   <h1 class="rubik-titles">Create new league</h1>
 
   <form class="form vertical-medium" [formGroup]="createLeagueForm" (ngSubmit)="createLeague()">
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="name">League name</label>
-      <input class="input input-structure" type="name" [formControl]="name"
-        placeholder="Enter the name of the league" />
-    </div>
+    <app-form-control
+      [control]="name"
+      label="Name"
+      type="text"
+      placeholder="Enter your name"
+    ></app-form-control>
 
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="location">League location</label>
-      <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter league location" />
-    </div>
+    <app-form-control
+      [control]="location"
+      label="League location"
+      type="text"
+      placeholder="Enter league location"
+    ></app-form-control>
 
     <div class="bottom-fixed">
-      <button type="submit" class="btn btn-primary horizontal-layout fill-content">
+      <button type="submit" [disabled]="createLeagueForm.invalid" class="btn btn-primary horizontal-layout fill-content">
         <p>Create</p>
       </button>
     </div>

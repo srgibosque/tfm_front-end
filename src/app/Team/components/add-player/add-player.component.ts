@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { addPlayerToTeam } from '../../actions';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-add-player',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormControlComponent],
   templateUrl: './add-player.component.html',
   styleUrl: './add-player.component.scss'
 })
@@ -20,7 +21,7 @@ export class AddPlayerComponent {
     private store: Store<AppState>, 
     private formBuilder: FormBuilder
   ) {
-    this.email = new FormControl('', [Validators.required]);
+    this.email = new FormControl('', [Validators.required, Validators.email]);
 
     this.addPlayerForm = this.formBuilder.group({
       email: this.email

@@ -21,6 +21,10 @@
   @include rubik-font(0.875rem, $text-color-light , 400);
 }
 
+.rubik-error-labels {
+  @include rubik-font(0.875rem, $error-color-default , 400);
+}
+
 .rubik-titles {
   @include rubik-font(1.5rem, $text-color-default , 500);
 }
@@ -71,7 +75,7 @@
 
   &:focus {
     border-color: $primary-color-default;
-    outline: none; // Add this for better user experience
+    outline: none;
   }
 
   &:disabled {
@@ -81,6 +85,14 @@
   &::placeholder {
     color: $text-color-light;
   }
+
+  &.error {
+    border-color: $error-color-default;
+  }
+}
+
+.error-label {
+  color: $error-color-default;
 }
 
 .selector-option{
@@ -101,8 +113,13 @@
   background-color: $primary-color-default;
   border-radius: 2.25rem;
 
-  &:hover{
+  &:hover:not(:disabled){
     background-color: $primary-color-dark;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 }
 

@@ -1,54 +1,58 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.reducer';
 import { Router, RouterModule } from '@angular/router';
 import { UserDTO } from '../../../Profile/models/user.dto';
 import { signup } from '../../actions';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormControlComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
   signUpUser: UserDTO;
-  name: UntypedFormControl;
-  email: UntypedFormControl;
-  password: UntypedFormControl;
-  gender: UntypedFormControl;
-  birthdate: UntypedFormControl;
-  signUpForm: UntypedFormGroup;
+  name: FormControl;
+  email: FormControl;
+  password: FormControl;
+  gender: FormControl;
+  birthdate: FormControl;
+  signUpForm: FormGroup;
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private store: Store<AppState>
   ) {
     this.signUpUser = new UserDTO(undefined, '', '', '', undefined, null);
 
-    this.name = new UntypedFormControl('', [
+    this.name = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(50),
+      Validators.maxLength(30),
     ])
 
-    this.email = new UntypedFormControl('', [
-      Validators.required
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.email
     ]);
 
-    this.password = new UntypedFormControl('', [
+    this.password = new FormControl('', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(36),
     ]);
 
-    this.gender = new UntypedFormControl('', [
+    this.gender = new FormControl('', [
       Validators.required,
     ]);
 
-    this.birthdate = new UntypedFormControl('');
+    this.birthdate = new FormControl('', [
+      Validators.required,
+    ]);
 
     this.signUpForm = this.formBuilder.group({
       name: this.name,

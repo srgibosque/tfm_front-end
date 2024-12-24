@@ -8,11 +8,12 @@ import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { createTeam, loadPlayersToAdd, removePlayerToAdd, updateTeam } from '../../actions';
 import { selectPlayersToAdd } from '../../selectors/team.selector';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-team-form',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent],
   templateUrl: './team-form.component.html',
   styleUrl: './team-form.component.scss'
 })
@@ -36,10 +37,18 @@ export class TeamFormComponent implements OnInit {
     this.name = new FormControl('', [Validators.required]);
     this.userTeamName = new FormControl(
       { value: '', disabled: this.isEditMode },
-      [Validators.required]
-    );
-    this.contactEmail = new FormControl('', [Validators.required]);
-    this.location = new FormControl('', [Validators.required]);
+      [
+        Validators.required, 
+        Validators.maxLength(30)
+      ]);
+    this.contactEmail = new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]);
+    this.location = new FormControl('', [
+      Validators.required,
+      Validators.maxLength(80)
+    ]);
 
     this.createTeamForm = this.formBuilder.group({
       name: this.name,

@@ -11,34 +11,36 @@
   <h1 class="rubik-titles">{{ isEditMode ? 'Update team' : 'Create new team' }}</h1>
 
   <form class="form vertical-medium" [formGroup]="createTeamForm" (ngSubmit)="submitForm()">
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="name">Name</label>
-      <input 
-        class="input input-structure" 
-        type="name" 
-        [formControl]="name"
-        placeholder="Enter the name of the team" />
-    </div>
+    <app-form-control
+      [control]="name"
+      label="Name"
+      type="text"
+      placeholder="Enter your name"
+    ></app-form-control>
 
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="userTeamName">Team unique identifier</label>
-      <input class="input input-structure" type="name" [formControl]="userTeamName"
-        placeholder="Enter a unique identifier for the team" />
-    </div>
-    
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="contactInfo">Contact info</label>
-      <input class="input input-structure" type="name" [formControl]="contactEmail"
-        placeholder="Enter the contact email" />
-    </div>
+    <app-form-control
+      [control]="userTeamName"
+      label="Team unique identifier"
+      type="text"
+      placeholder="Enter a unique identifier for the team"
+    ></app-form-control>
 
-    <div class="form-control vertical-extra-small">
-      <label class="rubik-labels" for="location">Team location</label>
-      <input class="input input-structure" type="name" [formControl]="location" placeholder="Enter team location" />
-    </div>
+    <app-form-control
+      [control]="contactEmail"
+      label="Contact info"
+      type="email"
+      placeholder="Enter the contact email"
+    ></app-form-control>
+
+    <app-form-control
+      [control]="location"
+      label="Team location"
+      type="text"
+      placeholder="Enter team location"
+    ></app-form-control>
 
     <div class="bottom-fixed">
-      <button type="submit" class="btn btn-primary horizontal-layout fill-content">
+      <button type="submit" [disabled]="createTeamForm.invalid" class="btn btn-primary horizontal-layout fill-content">
         <p>{{ isEditMode ? 'Update' : 'Create' }}</p>
       </button>
     </div>

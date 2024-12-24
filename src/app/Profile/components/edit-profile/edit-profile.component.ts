@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { UserDTO } from '../../models/user.dto';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppState } from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -9,43 +8,47 @@ import { User } from '../../models/user.interface';
 import { selectUserData } from '../../selectors/profile.selectors';
 import { DateFormattingService } from '../../../Shared/services/date-formatting.service';
 import { updateProfile } from '../../actions';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, FormControlComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss'
 })
 export class EditProfileComponent implements OnInit {
-  name: UntypedFormControl;
-  email: UntypedFormControl;
-  gender: UntypedFormControl;
-  birthdate: UntypedFormControl;
-  editProfileForm: UntypedFormGroup;
-  userData$: Observable<User>
+  name: FormControl;
+  email: FormControl;
+  gender: FormControl;
+  birthdate: FormControl;
+  editProfileForm: FormGroup;
+  userData$: Observable<User>;
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private store: Store<AppState>,
     private dateFormattingService: DateFormattingService
   ) {
 
-    this.name = new UntypedFormControl('', [
+    this.name = new FormControl('', [
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(50),
+      Validators.maxLength(30),
     ])
 
-    this.email = new UntypedFormControl('', [
-      Validators.required
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.email
     ]);
 
-    this.gender = new UntypedFormControl('', [
+    this.gender = new FormControl('', [
       Validators.required,
     ]);
 
-    this.birthdate = new UntypedFormControl('');
+    this.birthdate = new FormControl('', [
+      Validators.required,
+    ]);
 
     this.editProfileForm = this.formBuilder.group({
       name: this.name,

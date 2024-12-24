@@ -15,9 +15,12 @@
     </button>
   </div>
   <form class="vertical-medium" [formGroup]="addPlayerForm" (ngSubmit)="onSubmit()">
-    <div class="form-control vertical-extra-small">
-      <input class="input input-structure" [formControl]="email" type="name" placeholder="Enter player email" />
-    </div>
+    <app-form-control
+      [control]="email"
+      label="Player email"
+      type="email"
+      placeholder="Enter player's email"
+    ></app-form-control>
 
     <button class="btn btn-primary horizontal-layout" type="submit">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">

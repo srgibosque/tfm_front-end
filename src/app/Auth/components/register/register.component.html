@@ -3,20 +3,27 @@
   <section class="vertical-large">
     <h1 class="rubik-titles">Sign up</h1>
     <form class="form vertical-medium" [formGroup]="signUpForm" (ngSubmit)="signUp()">
-      <div class="form-control vertical-extra-small">
-        <label class="rubik-labels" for="name">Name</label>
-        <input class="input input-structure" type="name" [formControl]="name" placeholder="Enter your name" />
-      </div>
+
+      <app-form-control
+        [control]="name"
+        label="Name"
+        type="text"
+        placeholder="Enter your name"
+      ></app-form-control>
   
-      <div class="form-control vertical-extra-small">
-        <label class="rubik-labels" for="email">Email</label>
-        <input class="input input-structure" type="email" [formControl]="email" placeholder="Enter your email" />
-      </div>
-  
-      <div class="form-control vertical-extra-small">
-        <label class="rubik-labels" for="password">Password</label>
-        <input class="input input-structure" type="password" [formControl]="password"/>
-      </div>
+      <app-form-control
+        [control]="email"
+        label="Email"
+        type="email"
+        placeholder="Enter your email"
+      ></app-form-control>
+
+      <app-form-control
+        [control]="password"
+        label="Password"
+        type="password"
+        placeholder=""
+      ></app-form-control>
   
       <div class="form-control vertical-extra-small">
         <label class="rubik-labels" for="gender">Gender</label>
@@ -26,14 +33,16 @@
           <option class="selector-option selector-option-structure" value="female">Female</option>
         </select>
       </div>
-  
-      <div class="form-control vertical-extra-small">
-        <label class="rubik-labels" for="birthdate">Birthdate</label>
-        <input class="input input-structure" id="birthdate" type="date" formControlName="birthdate"/>
-      </div>
       
-      <div class="fill-content">
-        <button type="submit" class="btn btn-primary rubik-buttons fill-content">Sign up</button>
+      <app-form-control
+        [control]="birthdate"
+        label="Birthdate"
+        type="date"
+        placeholder=""
+      ></app-form-control>
+      
+      <div>
+        <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-primary rubik-buttons fill-content">Sign up</button>
       </div>
     </form>
   </section>
