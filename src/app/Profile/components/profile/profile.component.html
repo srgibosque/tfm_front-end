@@ -12,7 +12,7 @@
       </div>
       <div class="vertical-extra-small">
         <h3 class="rubik-labels">Date of birth</h3>
-        <p>{{userData.birthdate}}</p>
+        <p>{{userData.birthdate || 'Birthdate not defined' | dateFormatter }}</p>
       </div>
       <div class="vertical-extra-small">
         <h3 class="rubik-labels">Gender</h3>
