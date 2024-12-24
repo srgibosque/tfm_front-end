@@ -1,1 +1,17 @@
-<p>next-matches-list works!</p>
+<div class="vertical-medium">
+  <h1 class="rubik-titles">My next matches</h1>
+  <ul class="vertical-extra-small">
+    <ng-container *ngIf="matches$ | async as matches">
+      <ng-container *ngIf="matches.length > 0; else noMatches">
+        <app-match-card
+          *ngFor="let match of matches"
+          [match]="match"
+          [isButtonShown]="false"
+        ></app-match-card>
+      </ng-container>
+    </ng-container>
+    <ng-template #noMatches>
+      <p class="rubik-secondary">You have no matches to play</p>
+    </ng-template>
+  </ul>
+</div>

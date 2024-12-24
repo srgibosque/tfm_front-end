@@ -5,15 +5,21 @@ export const selectProfileAppState = createFeatureSelector<ProfileState>('profil
 
 export const selectUserData = createSelector(
   selectProfileAppState,
-  (state: ProfileState) => state?.data?.user?.userData
+  (state: ProfileState) => state.data.user.userData
 );
 
 export const selectTeamsData = createSelector(
   selectProfileAppState,
-  (state: ProfileState) => state?.data?.user?.teams
+  (state: ProfileState) => state.data.user.teams
 );
 
 export const selectLeaguesData = createSelector(
   selectProfileAppState,
-  (state: ProfileState) => state?.data?.user?.leagues
+  (state: ProfileState) => state.data.user.leagues
 );
+
+export const selectMacthData = createSelector(
+  selectProfileAppState,
+  (state: ProfileState) => state.data.user.matches
+);
+

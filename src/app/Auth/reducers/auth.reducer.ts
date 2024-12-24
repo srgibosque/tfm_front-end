@@ -29,13 +29,13 @@ export const authReducer = createReducer(
     ...state,
     loading: true,
     loaded: false,
-    message: 'Login successful'
   })),
 
   on(loginSuccess, (state, { userId, token }) => ({
     ...state,
     loading: false,
     loaded: true,
+     message: 'Login successful',
     credentials: {
       ...state.credentials,
       userId: userId,

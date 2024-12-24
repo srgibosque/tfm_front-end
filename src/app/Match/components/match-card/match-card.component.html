@@ -3,7 +3,7 @@
     {{ match.date || 'Date to be defined' | dateTimeFormatter }}
   </p>
   <div class="teams-score">
-    <p class="team-name-left">{{ getTeamName(match.homeTeamId) }}</p>
+    <p class="team-name-left">{{ match.HomeTeam?.name }}</p>
     <div class="score">
       <p class="rubik-score">
         <ng-container *ngIf="match.homeTeamGoals !== null && match.homeTeamGoals !== undefined; else noHomeGoals">
@@ -21,9 +21,9 @@
         <ng-template #noAwayGoals>X</ng-template>
       </p>
     </div>
-    <p class="team-name-right">{{ getTeamName(match.awayTeamId) }}</p>
+    <p class="team-name-right">{{ match.AwayTeam?.name }}</p>
   </div>
   <p class="rubik-secondary">{{ match.location || 'Location to be defined' }}</p>
-  <button class="btn btn-secondary fill-content" [routerLink]="['./', match.id]">Update info</button>
+  <button *ngIf="isButtonShown" class="btn btn-secondary fill-content" [routerLink]="['./', match.id]">Update info</button>
 </li>
 

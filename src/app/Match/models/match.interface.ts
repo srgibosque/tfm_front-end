@@ -7,7 +7,9 @@ export interface Match {
   awayTeamGoals: number | null;
   homeTeamId?: number;
   awayTeamId?: number;
+  HomeTeam?: { id: number, name: string }
+  AwayTeam?: { id: number, name: string }
   leagueId?: number;
   createdAt?: string;
-  updatedAt?: string; 
+  updatedAt?: string;
 }

@@ -15,12 +15,5 @@ import { CommonModule } from '@angular/common';
 export class MatchCardComponent {
   @Input() match!: Match;
   @Input() teams: Team[] | null = [];
-
-  getTeamName(teamId: number | undefined): string {
-    if(!teamId){
-      return 'Team not defined';
-    }
-    const team = this.teams?.find((t) => t.id === teamId);
-    return team ? team.name : 'Team not defined';
-  }
+  @Input() isButtonShown: boolean = true;
 }
