@@ -7,11 +7,12 @@ import { AppState } from '../../../app.reducer';
 import { getProfile } from '../../../Profile/actions';
 import { selectTeamsData } from '../../../Profile/selectors/profile.selectors';
 import { RouterModule } from '@angular/router';
+import { NavigationCardComponent } from '../../../Shared/components/navigation-card/navigation-card.component';
 
 @Component({
   selector: 'app-teams-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavigationCardComponent],
   templateUrl: './teams-list.component.html',
   styleUrl: './teams-list.component.scss'
 })

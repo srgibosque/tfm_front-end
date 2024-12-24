@@ -2,17 +2,7 @@
   <h1 class="rubik-titles">My Leagues</h1>
   <ul class="vertical-medium fill-content">
     <li class="fill-content" *ngFor="let league of leagueData$ | async">
-      <a [routerLink]="['/my-leagues', league.id, 'table']">
-        <div class="card clickable-card">
-          <div class="vertical-extra-small">
-            <h3>{{league.name}}</h3>
-            <p class="rubik-secondary">{{league.location}}</p>
-          </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-            <path d="M8 7.91L12.58 12.5L8 17.09L9.41 18.5L15.41 12.5L9.41 6.5L8 7.91Z" fill="white" />
-          </svg>
-        </div>
-      </a>
+      <app-navigation-card [league]="league"></app-navigation-card>
     </li>
   </ul>
 </div>

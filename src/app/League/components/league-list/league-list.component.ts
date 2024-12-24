@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 import { getProfile } from '../../../Profile/actions';
 import { selectLeaguesData } from '../../../Profile/selectors/profile.selectors';
 import { RouterModule } from '@angular/router';
+import { NavigationCardComponent } from '../../../Shared/components/navigation-card/navigation-card.component';
 
 @Component({
   selector: 'app-league-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavigationCardComponent],
   templateUrl: './league-list.component.html',
   styleUrl: './league-list.component.scss'
 })

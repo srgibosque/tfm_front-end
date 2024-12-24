@@ -22,9 +22,7 @@ export class ToastComponent {
       this.store.select(selectGlobalMessage).subscribe((msg) => {
         if (msg) {
           this.message = msg;
-          console.log(this.message);
           this.clearToastAfterDelay();
-          console.log(this.message);
         }
       })
     );
@@ -33,7 +31,6 @@ export class ToastComponent {
       this.store.select(selectGlobalError).subscribe((err) => {
         if (err) {
           this.error = err;
-          console.log(this.error);
           this.clearToastAfterDelay();
         }
       })
