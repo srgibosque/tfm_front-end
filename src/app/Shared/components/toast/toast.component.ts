@@ -44,7 +44,6 @@ export class ToastComponent {
     timer(3000).subscribe(() => {
       this.message = null;
       this.error = null;
-      console.log(this.error);
       this.cdr.detectChanges();
     });
     

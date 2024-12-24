@@ -1,3 +1,17 @@
-<div *ngIf="message || error" [ngClass]="{'toast-success': message, 'toast-error': error}" class="toast">
+<div *ngIf="message || error" [ngClass]="{'toast-success': message, 'toast-error': error}" class="toast horizontal-layout">
+  <ng-container *ngIf="message">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM7.3 11L6 12.3333L10.55 17L19 8.33333L17.7 7L10.55 14.3333L7.3 11Z"
+        fill="#76DA44" />
+    </svg>
+  </ng-container>
+  <ng-container *ngIf="error">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM15.9929 7L17 8.00714L13.0071 12L17 15.9929L15.9929 17L12 13.0071L8.00714 17L7 15.9929L10.9929 12L7 8.00714L8.00714 7L12 10.9929L15.9929 7Z"
+        fill="#E23636" />
+    </svg>
+  </ng-container>
   <p>{{ message || error }}</p>
 </div>

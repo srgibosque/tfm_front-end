@@ -292,3 +292,14 @@
   background: rgba(0, 0, 0, 0.3);
   z-index: 1100;
 }
+
+.toast{
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3.5rem);
+  max-width: 40rem;
+  padding: 1rem;
+  z-index: 1100;
+}
