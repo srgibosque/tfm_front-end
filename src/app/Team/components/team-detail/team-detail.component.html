@@ -36,14 +36,13 @@
     <div class="vertical-small">
       <h3 class="rubik-labels">Players</h3>
       <ul class="vertical-small" *ngIf="team.Users && team.Users.length > 0; else noPlayers">
-        <li class="vertical-extra-small card info-card" *ngFor="let player of team.Users">
-          <h3>{{player.name}}</h3>
-          <p class="rubik-secondary">{{player.gender}}</p>
+        <li *ngFor="let player of team.Users">
+          <app-player-card [player]="player"></app-player-card>
         </li>
       </ul>
 
       <ng-template #noPlayers>
-        <p>No players found.</p>
+        <p>There are no players yet</p>
       </ng-template>
     </div>
   </div>

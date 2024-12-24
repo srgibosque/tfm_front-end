@@ -7,11 +7,12 @@ import { AppState } from '../../../app.reducer';
 import { deleteTeam, getTeam } from '../../actions';
 import { CommonModule } from '@angular/common';
 import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
+import { PlayerCardComponent } from '../../../Shared/components/player-card/player-card.component';
 
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, MoreOptionsModalComponent],
+  imports: [CommonModule, RouterModule, MoreOptionsModalComponent, PlayerCardComponent],
   templateUrl: './team-detail.component.html',
   styleUrl: './team-detail.component.scss'
 })

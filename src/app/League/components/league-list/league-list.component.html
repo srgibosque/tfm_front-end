@@ -1,10 +1,14 @@
 <div class="vertical-medium">
   <h1 class="rubik-titles">My Leagues</h1>
-  <ul class="vertical-medium fill-content">
+  <ul class="vertical-medium fill-content" *ngIf="(leagueData$ | async)?.length; else noLeagues">
     <li class="fill-content" *ngFor="let league of leagueData$ | async">
       <app-navigation-card [league]="league"></app-navigation-card>
     </li>
   </ul>
+
+  <ng-template #noLeagues>
+    <p class="rubik-secondary">You're not part of any leagues yet.</p>
+  </ng-template>
 </div>
 
 <div class="bottom-fixed">
