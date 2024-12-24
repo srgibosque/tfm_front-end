@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, EMPTY, map, mergeMap, of, switchMap, tap } from "rxjs";
+import { catchError, EMPTY, map, of, switchMap, tap } from "rxjs";
 
 import { AuthService } from "../services/auth.service";
 import { LocalStorageService } from "../../Shared/services/local-storage.service";
