@@ -7,11 +7,12 @@ import { AppState } from '../../../app.reducer';
 import { deleteLeague, getLeague } from '../../actions';
 import { CommonModule } from '@angular/common';
 import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
 
 @Component({
   selector: 'app-league-detail',
   standalone: true,
-  imports: [RouterModule, RouterLinkActive, CommonModule, MoreOptionsModalComponent],
+  imports: [RouterModule, RouterLinkActive, CommonModule, MoreOptionsModalComponent, NavBackComponent],
   templateUrl: './league-detail.component.html',
   styleUrl: './league-detail.component.scss'
 })

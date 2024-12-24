@@ -24,6 +24,6 @@
     <p class="team-name-right">{{ getTeamName(match.awayTeamId) }}</p>
   </div>
   <p class="rubik-secondary">{{ match.location || 'Location to be defined' }}</p>
-  <button class="btn btn-secondary fill-content" [routerLink]="['/match/edit', match.id]">Update info</button>
+  <button class="btn btn-secondary fill-content" [routerLink]="['./', match.id]">Update info</button>
 </li>
 

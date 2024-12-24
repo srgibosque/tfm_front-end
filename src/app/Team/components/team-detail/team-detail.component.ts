@@ -8,11 +8,12 @@ import { deleteTeam, getTeam } from '../../actions';
 import { CommonModule } from '@angular/common';
 import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
 import { PlayerCardComponent } from '../../../Shared/components/player-card/player-card.component';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
 
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, MoreOptionsModalComponent, PlayerCardComponent],
+  imports: [CommonModule, RouterModule, MoreOptionsModalComponent, PlayerCardComponent, NavBackComponent],
   templateUrl: './team-detail.component.html',
   styleUrl: './team-detail.component.scss'
 })

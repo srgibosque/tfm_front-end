@@ -9,11 +9,12 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { Team } from '../../../Team/models/team.interface';
 import { selectTeamsToAdd } from '../../selectors/league.selectors';
 import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
 
 @Component({
   selector: 'app-league-create',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent, NavBackComponent],
   templateUrl: './league-create.component.html',
   styleUrl: './league-create.component.scss'
 })

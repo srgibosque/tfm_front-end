@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Match } from '../../models/match.interface';
 import { Store } from '@ngrx/store';
@@ -7,35 +7,37 @@ import { AppState } from '../../../app.reducer';
 import { DateFormattingService } from '../../../Shared/services/date-formatting.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { getMatch, updateMatch } from '../../actions';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
+import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
 
 @Component({
   selector: 'app-edit-match',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, NavBackComponent, FormControlComponent],
   templateUrl: './edit-match.component.html',
   styleUrl: './edit-match.component.scss'
 })
 export class EditMatchComponent implements OnInit {
-  date: UntypedFormControl;
-  location: UntypedFormControl;
-  homeTeamGoals: UntypedFormControl;
-  awayTeamGoals: UntypedFormControl;
-  editMatchForm: UntypedFormGroup;
+  date: FormControl;
+  location: FormControl;
+  homeTeamGoals: FormControl;
+  awayTeamGoals: FormControl;
+  editMatchForm: FormGroup;
   matchData$?: Observable<Match | undefined>;
   leagueId?: number;
 
   constructor(
-    private formBuilder: UntypedFormBuilder,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private store: Store<AppState>,
     private router: Router,
     private dateFormattingService: DateFormattingService
   ) {
 
-    this.date = new UntypedFormControl('')
-    this.location = new UntypedFormControl('');
-    this.homeTeamGoals = new UntypedFormControl('');
-    this.awayTeamGoals = new UntypedFormControl('');
+    this.date = new FormControl('')
+    this.location = new FormControl('');
+    this.homeTeamGoals = new FormControl('');
+    this.awayTeamGoals = new FormControl('');
 
     this.editMatchForm = this.formBuilder.group({
       date: this.date,
@@ -81,9 +83,5 @@ export class EditMatchComponent implements OnInit {
         awayTeamGoals: formValues.awayTeamGoals,
       }));
     }
-  }
-
-  goToLeague() {
-    this.router.navigate(['/my-leagues', this.leagueId, 'matches']);
   }
 }

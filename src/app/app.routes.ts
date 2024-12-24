@@ -91,7 +91,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'match/edit/:matchId',
+    path: 'my-leagues/:leagueId/matches/:matchId',
     component: EditMatchComponent,
     canActivate: [authGuard],
   },

@@ -9,11 +9,12 @@ import { selectUserData } from '../../selectors/profile.selectors';
 import { DateFormattingService } from '../../../Shared/services/date-formatting.service';
 import { updateProfile } from '../../actions';
 import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, FormControlComponent],
+  imports: [ReactiveFormsModule, RouterModule, FormControlComponent, NavBackComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss'
 })

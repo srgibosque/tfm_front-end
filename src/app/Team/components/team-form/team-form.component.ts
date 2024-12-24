@@ -9,11 +9,12 @@ import { Store } from '@ngrx/store';
 import { createTeam, loadPlayersToAdd, removePlayerToAdd, updateTeam } from '../../actions';
 import { selectPlayersToAdd } from '../../selectors/team.selector';
 import { FormControlComponent } from '../../../Shared/components/form-control/form-control.component';
+import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
 
 @Component({
   selector: 'app-team-form',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, FormControlComponent, NavBackComponent],
   templateUrl: './team-form.component.html',
   styleUrl: './team-form.component.scss'
 })
