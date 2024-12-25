@@ -1,10 +1,10 @@
-<div class="form-control vertical-extra-small">
+<div class="vertical-extra-small">
   <label class="rubik-labels" [for]="control">{{ label }}</label>
-  <input class="input input-structure" [type]="type" [formControl]="control" [placeholder]="placeholder"
+  <input class="input" [type]="type" [formControl]="control" [placeholder]="placeholder"
     [ngClass]="{'error': control.errors && (control.touched || control.dirty)}" />
   <div *ngIf="control.errors">
     <span *ngIf="control.errors && (control.touched || control.dirty)">
-      <div class="horizontal-layout error-label rubik-error-labels">
+      <div class="error-label rubik-error-labels">
         <div class="icon-container">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"

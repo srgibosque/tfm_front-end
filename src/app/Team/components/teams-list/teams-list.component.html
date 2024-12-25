@@ -1,7 +1,7 @@
 <div class="vertical-medium">
   <h1 class="rubik-titles">My Teams</h1>
-  <ul class="vertical-medium fill-content" *ngIf="(teamData$ | async)?.length; else noTeams">
-    <li class="fill-content" *ngFor="let team of teamData$ | async">
+  <ul class="vertical-medium" *ngIf="(teamData$ | async)?.length; else noTeams">
+    <li *ngFor="let team of teamData$ | async">
       <app-navigation-card [team]="team"></app-navigation-card>
     </li>
   </ul>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="shadow-container bottom-fixed">
-  <button class="btn btn-primary horizontal-layout fill-content" [routerLink]="['/my-teams', 'team-form']">
+  <button class="btn btn-primary fill-content" [routerLink]="['/my-teams', 'team-form']">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
       <path d="M19.5 12.998H13.5V18.998H11.5V12.998H5.5V10.998H11.5V4.99805H13.5V10.998H19.5V12.998Z" fill="white" />
     </svg>

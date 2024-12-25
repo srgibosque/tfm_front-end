@@ -108,7 +108,7 @@
     fill: $text-color-light;
   }
   
-  .icon-tab-structure.active .icon {
+  .icon-tab.active .icon {
     fill: $text-color-default;
   }
 
@@ -166,7 +166,7 @@
   }
 
   // Button
-  .btn{
+  :where(.btn, .icon-btn){
     border-radius: 2.25rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -212,6 +212,15 @@
     background-color: $bg-color-light;
     border-radius: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .modal-actions {
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $bg-color-lighter;
+      }
+    }
   }
 
   // Badge

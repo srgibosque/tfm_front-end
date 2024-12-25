@@ -1,5 +1,7 @@
 <div class="form-and-button">
-  <button class="rubik-buttons" [routerLink]="['/login']">Log in</button>
+  <div class="text-align-right">
+    <button class="btn btn-terciary" [routerLink]="['/login']">Log in</button>
+  </div>
   <section class="vertical-large">
     <h1 class="rubik-titles">Sign up</h1>
     <form class="form vertical-medium" [formGroup]="signUpForm" (ngSubmit)="signUp()">
@@ -41,9 +43,8 @@
         placeholder=""
       ></app-form-control>
       
-      <div>
-        <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-primary rubik-buttons fill-content">Sign up</button>
-      </div>
+      <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-primary">Sign up</button>
+      
     </form>
   </section>
 </div>
