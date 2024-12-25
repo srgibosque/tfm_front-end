@@ -1,208 +1,268 @@
-@mixin rubik-font($size, $color, $weight) {
-  font: {
-    family: "Rubik", sans-serif;
-    size: $size;
-    style: normal;
-    weight: $weight;
-  }
-  font-optical-sizing: auto;
-  color: $color;
-}
-
-.rubik-regular {
-  @include rubik-font(1rem, $text-color-default, 400);
-}
-
-.rubik-secondary {
-  @include rubik-font(1rem, $text-color-light, 400);
-}
-
-.rubik-labels {
-  @include rubik-font(0.875rem, $text-color-light , 400);
-}
-
-.rubik-error-labels {
-  @include rubik-font(0.875rem, $error-color-default , 400);
-}
-
-.rubik-titles {
-  @include rubik-font(1.5rem, $text-color-default , 500);
-}
-
-.rubik-subtitles {
-  @include rubik-font(1.25rem, $text-color-default , 500);
-}
-
-.rubik-subtitles-secondary {
-  @include rubik-font(1.25rem, $text-color-light , 500);
-}
-
-.rubik-buttons {
-  @include rubik-font(1rem, $text-color-default , 500);
-}
-
-.rubik-score {
-  @include rubik-font(1.75rem, $text-color-default , 500);
-}
-
-.tabs {
-  border-radius: 1.75rem;
-  background-color: $bg-color-light;
-}
-
-.tab {
-  border-radius: 1.5rem;
-  color: $text-color-light;
-}
-
-.active {
-  color: $text-color-default;
-  background-color: $primary-color-default;
-}
-
-.icon {
-  fill: $text-color-light;
-}
-
-.icon-tab-structure.active .icon {
-  fill: $text-color-default;
-}
-
-.input {
-  border: 1px solid $text-color-default;
-  border-radius: 2rem;
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    border-color: $primary-color-default;
-    outline: none;
+@layer reset {
+  :where(h1, h3, p, a, button, select, option) {
+    all: unset;
   }
 
-  &:disabled {
-    opacity: 0.4;
+  input {
+    all: unset;
+  
+    &::placeholder {
+      all: unset;
+    }
   }
 
-  &::placeholder {
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
+@layer base {
+  html {
+    background-color: $bg-color-default;
+    color: $text-color-default;
+  }
+}
+
+@layer utilities {
+  @mixin rubik-font($size, $color, $weight) {
+    font: {
+      family: "Rubik", sans-serif;
+      size: $size;
+      style: normal;
+      weight: $weight;
+    }
+    font-optical-sizing: auto;
+    color: $color;
+  }
+
+  .rubik-regular {
+    @include rubik-font(1rem, $text-color-default, 400);
+  }
+  
+  .rubik-secondary {
+    @include rubik-font(1rem, $text-color-light, 400);
+  }
+  
+  .rubik-labels {
+    @include rubik-font(0.875rem, $text-color-light , 400);
+  }
+  
+  .rubik-error-labels {
+    @include rubik-font(0.875rem, $error-color-default , 400);
+  }
+  
+  .rubik-titles {
+    @include rubik-font(1.5rem, $text-color-default , 500);
+  }
+  
+  .rubik-subtitles {
+    @include rubik-font(1.25rem, $text-color-default , 500);
+  }
+  
+  .rubik-subtitles-secondary {
+    @include rubik-font(1.25rem, $text-color-light , 500);
+  }
+  
+  .rubik-buttons {
+    @include rubik-font(1rem, $text-color-default , 500);
+  }
+  
+  .rubik-score {
+    @include rubik-font(1.75rem, $text-color-default , 500);
+  }
+
+  .shadow-container{
+    box-shadow: 0px -4px 12px 0px rgba(0, 0, 0, 0.20);
+    background-color: $bg-color-default;
+  }
+
+  .bottom-stroke {
+    border-bottom: 1px solid $bg-color-lighter;
+  }
+}
+
+@layer components {
+  // Navbar
+  .tabs {
+    border-radius: 1.75rem;
+    background-color: $bg-color-light;
+  }
+  
+  .tab {
+    border-radius: 1.5rem;
     color: $text-color-light;
-  }
+    cursor: pointer;
 
-  &.error {
-    border-color: $error-color-default;
-  }
-}
-
-.error-label {
-  color: $error-color-default;
-}
-
-.selector-option{
-  background-color: $bg-color-light;
-}
-
-.card{
-  border-radius: 1.5rem;
-  background-color: $bg-color-light;
-}
-
-.match-card{
-  border-radius: 1.5rem;
-  border: 1px solid $bg-color-lighter;
-}
-
-.btn-primary{
-  background-color: $primary-color-default;
-  border-radius: 2.25rem;
-
-  &:hover:not(:disabled){
-    background-color: $primary-color-dark;
-  }
-
-  &:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-}
-
-.btn-secondary{
-  background-color: transparent;
-  border-radius: 2.25rem;
-  border: 1px solid $bg-color-lighter;
-}
-
-.table-row{
-  border-bottom: 1px solid $bg-color-lighter;
-}
-
-.bottom-fixed{
-  box-shadow: 0px -4px 12px 0px rgba(0, 0, 0, 0.20);
-}
-
-//modal
-.modal-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-}
-
-.modal {
-  background-color: $bg-color-light;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal-bottom{
-  background-color: $bg-color-light;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal-bottom-title{
-  border-bottom: 1px solid $bg-color-lighter;
-}
-
-.badge{
-  border-radius: 1.5rem;
-  background-color: $bg-color-lighter;
-}
-
-.spinner {
-  width: 50px; 
-  height: 50px; 
-  border: 6px solid #f3f3f3; 
-  border-top: 6px solid $primary-color-default;
-  border-radius: 50%;
-  animation: spin 1s linear infinite; 
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.toast {
-  border-radius: 1rem;
-  animation: fadeOut 3s forwards;
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
+    &.active {
+      color: $text-color-default;
+      background-color: $primary-color-default;
     }
   }
-}
+  
+  .icon {
+    fill: $text-color-light;
+  }
+  
+  .icon-tab-structure.active .icon {
+    fill: $text-color-default;
+  }
 
-.toast-success {
-  background-color: $success-color-light;
-}
+  // Form controls
+  .input {
+    border: 1px solid $text-color-default;
+    border-radius: 2rem;
+    transition: border-color 0.3s ease;
+  
+    &:focus {
+      border-color: $primary-color-default;
+      outline: none;
+    }
+  
+    &:disabled {
+      opacity: 0.4;
+    }
+  
+    &::placeholder {
+      color: $text-color-light;
+    }
+  
+    &.error {
+      border-color: $error-color-default;
+    }
+  }
+  
+  .error-label {
+    color: $error-color-default;
+  }
+  
+  .selector-option{
+    background-color: $bg-color-light;
+  }
 
-.toast-error {
-  background-color: $error-color-light;
+  // Card
+  .card{
+    border-radius: 1.5rem;
+    background-color: $bg-color-light;
+
+    &.clickable-card {
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+
+      &:hover{
+        box-shadow: inset 0 0 0 1px $primary-color-default;
+      }
+    }
+
+    &.match-card{
+      border-radius: 1.5rem;
+      border: 1px solid $bg-color-lighter;
+      background-color: transparent;
+    }
+  }
+
+  // Button
+  .btn{
+    border-radius: 2.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &.btn-primary{
+      background-color: $primary-color-default;
+      
+      &:hover:not(:disabled){
+        background-color: $primary-color-dark;
+      }
+    }
+
+    &.btn-secondary{
+      border: 1px solid $bg-color-lighter;
+      background-color: transparent;
+
+      &:hover:not(:disabled){
+        background-color: $bg-color-lighter;
+      }
+    }
+
+    &.btn-terciary{
+      background-color: transparent;
+
+      &:hover:not(:disabled){
+        background-color: $bg-color-light;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  // Modal
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+  }
+
+  .modal {
+    background-color: $bg-color-light;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  // Badge
+  .badge{
+    border-radius: 1.5rem;
+    background-color: $bg-color-lighter;
+  }
+
+  // Toast
+  .toast {
+    border-radius: 1rem;
+    animation: fadeOut 3s forwards;
+  
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    &.toast-success {
+      background-color: $success-color-light;
+    }
+
+    &.toast-error {
+      background-color: $error-color-light;
+    }
+  }
+  
+  // Spinner
+  .spinner {
+    width: 50px; 
+    height: 50px; 
+    border: 6px solid $text-color-default; 
+    border-top: 6px solid $primary-color-default;
+    border-radius: 50%;
+    animation: spin 1s linear infinite; 
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+   
 }

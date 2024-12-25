@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { map } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
 
   return store.select('authApp').pipe(
     map((authResponse) => {
+
       const token = authResponse.credentials.token;
 
       if (token) {

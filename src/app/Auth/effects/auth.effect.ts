@@ -22,10 +22,10 @@ export class AuthEffects {
     switchMap(() => {
       const token = this.localStorageService.get('token');
       const userId = this.localStorageService.get('userId');
+      
       if (token && userId) {
         return of(loginSuccess({ userId: +userId, token }));
       } else {
-        this.router.navigate(['/login']);
         return EMPTY;
       }
     })
@@ -58,7 +58,7 @@ export class AuthEffects {
     tap((accessInfo) => {
       this.localStorageService.set('token', accessInfo.token);
       this.localStorageService.set('userId', accessInfo.userId.toString());
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
     })
   ), { dispatch: false });
 

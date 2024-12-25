@@ -1,6 +1,6 @@
 <table class="table">
   <thead>
-    <tr class="table-row">
+    <tr class="table-row bottom-stroke">
       <div>
         <th class="table-cell firstcolumn rubik-secondary">Pos</th>
         <th class="table-cell rubik-secondary">Team name</th>
@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody class="rubik-regular">
-    <tr class="table-row" *ngFor="let row of (leagueTable$ | async)?.table; let i = index">
+    <tr class="table-row bottom-stroke" *ngFor="let row of (leagueTable$ | async)?.table; let i = index">
       <ng-container *ngIf="teams$ | async as teams">
         <div>
           <td class="table-cell first-column rubik-secondary">{{ i + 1 }}</td>

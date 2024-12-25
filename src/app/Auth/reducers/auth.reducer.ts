@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { clearError, clearMessage, login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
+import { autoLogin, clearError, clearMessage, login, loginFailure, loginSuccess, logout, signup, signupFailure, signupSuccess } from "../actions";
 
 export interface Credentials {
   userId: number | null;

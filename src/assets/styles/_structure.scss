@@ -1,3 +1,23 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer base {
+  body {
+    margin: 1.75rem;
+  }
+}
+
+
 @mixin center() {
   display: flex;
   flex-direction: column;
@@ -272,7 +292,7 @@
   box-sizing: border-box;
 }
 
-.badge{
+.badge {
   padding: 0.5rem 0.75rem;
 }
 
@@ -297,7 +317,7 @@
   z-index: 1100;
 }
 
-.toast{
+.toast {
   position: fixed;
   bottom: 1rem;
   left: 50%;
