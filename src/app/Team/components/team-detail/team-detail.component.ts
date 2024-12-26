@@ -9,11 +9,12 @@ import { CommonModule } from '@angular/common';
 import { MoreOptionsModalComponent } from '../../../Shared/components/more-options-modal/more-options-modal.component';
 import { PlayerCardComponent } from '../../../Shared/components/player-card/player-card.component';
 import { NavBackComponent } from '../../../Shared/components/nav-back/nav-back.component';
+import { BadgeComponent } from '../../../Shared/components/badge/badge.component';
 
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, MoreOptionsModalComponent, PlayerCardComponent, NavBackComponent],
+  imports: [CommonModule, RouterModule, MoreOptionsModalComponent, PlayerCardComponent, NavBackComponent, BadgeComponent],
   templateUrl: './team-detail.component.html',
   styleUrl: './team-detail.component.scss'
 })

@@ -3,4 +3,7 @@
     <h3>{{player.name}}</h3>
     <p class="rubik-secondary">{{player.gender}}</p>
   </div>
+  <ng-container *ngIf="player.birthdate">
+    <app-badge>{{getAge(player.birthdate)}} years old</app-badge>
+  </ng-container>
 </div>

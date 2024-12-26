@@ -47,6 +47,10 @@
   .rubik-secondary {
     @include rubik-font(1rem, $text-color-light, 400);
   }
+
+  .rubik-small {
+    @include rubik-font(0.875rem, $text-color-default, 400);
+  }
   
   .rubik-labels {
     @include rubik-font(0.875rem, $text-color-light , 400);
