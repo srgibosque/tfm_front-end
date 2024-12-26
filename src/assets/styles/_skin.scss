@@ -110,6 +110,11 @@
     color: $text-color-light;
     cursor: pointer;
 
+    &:hover {
+      // color: $text-color-default;
+      background-color: rgba($bg-color-lighter, 0.2);
+    }
+
     &.active {
       color: $text-color-default;
       background-color: $primary-color-default;
