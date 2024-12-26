@@ -14,11 +14,9 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
       const token = authResponse.credentials.token;
 
       if (token) {
-        console.log('Access');
         return true;
 
       } else {
-        console.log('Access denied');
         router.navigate(['/login']);
         return false;
       }

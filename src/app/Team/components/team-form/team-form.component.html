@@ -5,47 +5,22 @@
   <h1 class="rubik-titles">{{ isEditMode ? 'Update team' : 'Create new team' }}</h1>
 
   <form class="form vertical-medium" [formGroup]="createTeamForm" (ngSubmit)="submitForm()">
-    <app-form-control
-      [control]="name"
-      label="Name"
-      type="text"
-      placeholder="Enter your name"
-    ></app-form-control>
 
-    <app-form-control
-      [control]="userTeamName"
-      label="Team unique identifier"
-      type="text"
-      placeholder="Enter a unique identifier for the team"
-    ></app-form-control>
+    <app-form-control [control]="name" label="Name" type="text" placeholder="Enter your name"></app-form-control>
 
-    <app-form-control
-      [control]="contactEmail"
-      label="Contact info"
-      type="email"
-      placeholder="Enter the contact email"
-    ></app-form-control>
+    <app-form-control [control]="userTeamName" label="Team unique identifier" type="text"
+      placeholder="Enter a unique identifier for the team"></app-form-control>
 
-    <app-form-control
-      [control]="location"
-      label="Team location"
-      type="text"
-      placeholder="Enter team location"
-    ></app-form-control>
+    <app-form-control [control]="contactEmail" label="Contact info" type="email"
+      placeholder="Enter the contact email"></app-form-control>
 
-    <div class="bottom-fixed">
-      <button type="submit" [disabled]="createTeamForm.invalid" class="btn btn-primary horizontal-layout fill-content">
-        <p>{{ isEditMode ? 'Update' : 'Create' }}</p>
-      </button>
-    </div>
+    <app-form-control [control]="location" label="Team location" type="text"
+      placeholder="Enter team location"></app-form-control>
 
     <div class="vertical-extra-small">
       <label class="rubik-labels">Players</label>
 
-      <button 
-        type="button" 
-        class="btn btn-secondary horizontal-layout" 
-        (click)="navigateToAddPlayer()">
+      <button type="button" class="btn btn-secondary horizontal-layout" (click)="navigateToAddPlayer()">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
           <path d="M19.5 13.377H13.5V19.377H11.5V13.377H5.5V11.377H11.5V5.37695H13.5V11.377H19.5V13.377Z"
             fill="white" />
@@ -71,6 +46,12 @@
           </ng-container>
         </li>
       </ul>
+    </div>
+
+    <div class="shadow-container bottom-fixed">
+      <button type="submit" [disabled]="createTeamForm.invalid" class="btn btn-primary max-width fill-content">
+        <p>{{ isEditMode ? 'Update' : 'Create' }}</p>
+      </button>
     </div>
 
   </form>

@@ -1,6 +1,6 @@
 <div class="vertical-medium">
   <h1 class="rubik-titles">My next matches</h1>
-  <ul class="vertical-extra-small">
+  <ul class="grid-layout">
     <ng-container *ngIf="matches$ | async as matches">
       <ng-container *ngIf="matches.length > 0; else noMatches">
         <app-match-card
