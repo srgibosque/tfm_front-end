@@ -41,11 +41,11 @@
 
 @layer base {
   main {
-    margin: 2rem 1rem;
+    margin: 1rem 1rem 8rem ;
 
     @media(min-width: $medium-device-breakpoint){
       max-width: $max-width;
-      margin: 2rem auto;
+      margin: 1rem auto 8rem;
     }
   }
 }
@@ -218,12 +218,16 @@
     padding: 0.25rem;
 
     header & {
-      max-width: 40rem;
+      max-width: 48rem;
     }
 
     .tab {
       @include center(row);
-      padding: 1rem 2rem;
+      padding: 1rem;
+
+      @media(min-width: $small-device-breakpoint){
+        padding: 1rem 2rem;
+      }
 
       &.icon-tab {
         @include center(row);
