@@ -86,6 +86,8 @@
     top: 0;
     padding: 1.25rem;
     z-index: 1000; 
+    @include center(column);
+    gap: 1.25rem;
   }
 
   .bottom-fixed {

@@ -109,9 +109,9 @@
     border-radius: 1.5rem;
     color: $text-color-light;
     cursor: pointer;
+    transition: background-color 0.4s ease;
 
     &:hover {
-      // color: $text-color-default;
       background-color: rgba($bg-color-lighter, 0.2);
     }
 
