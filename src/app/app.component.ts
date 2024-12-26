@@ -9,11 +9,12 @@ import { selectGlobalError, selectGlobalMessage, selectIsLoading } from './Share
 import { NavBarComponent } from './Shared/components/nav-bar/nav-bar.component';
 import { SpinnerComponent } from './Shared/components/spinner/spinner.component';
 import { ToastComponent } from './Shared/components/toast/toast.component';
+import { ScrollDirective } from './Shared/directives/scroll.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavBarComponent, SpinnerComponent, ToastComponent],
+  imports: [CommonModule, RouterOutlet, NavBarComponent, SpinnerComponent, ToastComponent, ScrollDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

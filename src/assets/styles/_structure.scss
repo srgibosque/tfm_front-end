@@ -33,14 +33,14 @@
     box-sizing: border-box;
   }
 
-  ul {
+  :where(ul, body) {
     margin: 0;
     padding: 0;
   }
 }
 
 @layer base {
-  body {
+  main {
     margin: 2rem 1rem;
 
     @media(min-width: $medium-device-breakpoint){
@@ -78,6 +78,14 @@
 
   .center-component {
     @include center(column);
+  }
+
+  .sticky-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 1.25rem;
+    z-index: 1000; 
   }
 
   .bottom-fixed {
@@ -211,7 +219,6 @@
 
     header & {
       max-width: 40rem;
-      margin-bottom: 2rem;
     }
 
     .tab {

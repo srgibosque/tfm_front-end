@@ -81,6 +81,14 @@
     background-color: $bg-color-default;
   }
 
+  .nav-container {
+    background-color: $bg-color-default;
+  }
+ 
+  .shadow-bottom {
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.20);
+  }
+
   .bottom-stroke {
     border-bottom: 1px solid $bg-color-lighter;
   }
