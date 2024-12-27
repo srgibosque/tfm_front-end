@@ -5,6 +5,7 @@ import { League } from '../models/league.interface';
 import { LeagueTable } from '../models/league-table.interface';
 import { Team } from '../../Team/models/team.interface';
 import { Match } from '../../Match/models/match.interface';
+import { environment } from '../../../environments/environment';
 
 export interface LeagueResponse {
   message: string;
@@ -15,31 +16,32 @@ export interface LeagueResponse {
   providedIn: 'root'
 })
 export class LeagueService {
-  private urlBlogUocApi: string;
+  API_URL: string = environment.apiUrl;
+  private urlApi: string;
   private controller: string;
 
   constructor(private http: HttpClient) {
     this.controller = 'league';
-    this.urlBlogUocApi = 'http://localhost:8080/' + this.controller;
+    this.urlApi = this.API_URL + this.controller;
   }
 
   getLeague(leagueId: string): Observable<LeagueResponse> {
-    return this.http.get<LeagueResponse>(this.urlBlogUocApi + '/' + leagueId);
+    return this.http.get<LeagueResponse>(this.urlApi + '/' + leagueId);
   }
 
   getLeagueTable(leagueId: string): Observable<LeagueTable> {
-    return this.http.get<LeagueTable>(this.urlBlogUocApi + '/' + leagueId + '/table');
+    return this.http.get<LeagueTable>(this.urlApi + '/' + leagueId + '/table');
   }
 
   getTeamByTeamName(teamName: string): Observable<{ message: string, team: Team }> {
-    return this.http.get<{ message: string, team: Team }>(this.urlBlogUocApi + '/team/' + teamName);
+    return this.http.get<{ message: string, team: Team }>(this.urlApi + '/team/' + teamName);
   }
 
   createLeague(leagueData: { name: string, location: string, teamIds: number[] }): Observable<{ message: string, league: League, matches: Match[] }> {
-    return this.http.post<{ message: string, league: League, matches: Match[] }>(this.urlBlogUocApi, leagueData);
+    return this.http.post<{ message: string, league: League, matches: Match[] }>(this.urlApi, leagueData);
   }
 
-  deleteLeague(leagueId: string): Observable<{message: string}>{
-    return this.http.delete<{message: string}>(this.urlBlogUocApi + '/' + leagueId);
+  deleteLeague(leagueId: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(this.urlApi + '/' + leagueId);
   }
 }

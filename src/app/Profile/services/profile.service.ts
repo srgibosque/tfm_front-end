@@ -5,6 +5,7 @@ import { User } from '../models/user.interface';
 import { Team } from '../../Team/models/team.interface';
 import { League } from '../../League/models/league.interface';
 import { Match } from '../../Match/models/match.interface';
+import { environment } from '../../../environments/environment';
 
 export interface Profile {
   user: {
@@ -19,19 +20,20 @@ export interface Profile {
   providedIn: 'root'
 })
 export class ProfileService {
-  private urlBlogUocApi: string;
+  API_URL: string = environment.apiUrl;
+  private urlApi: string;
   private controller: string;
 
   constructor(private http: HttpClient) {
     this.controller = 'user';
-    this.urlBlogUocApi = 'http://localhost:8080/' + this.controller;
+    this.urlApi = this.API_URL + this.controller;
   }
 
   getProfile(): Observable<Profile> {
-    return this.http.get<Profile>(this.urlBlogUocApi + '/profile');
+    return this.http.get<Profile>(this.urlApi + '/profile');
   }
 
   updateProfile(updatedUser: User): Observable<{message: string, user: User}>{
-    return this.http.put<{message: string, user: User}>(this.urlBlogUocApi + '/profile', updatedUser);
+    return this.http.put<{message: string, user: User}>(this.urlApi + '/profile', updatedUser);
   }
 }
