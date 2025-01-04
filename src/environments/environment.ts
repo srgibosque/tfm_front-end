@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://54.229.223.240:3000/api/'
+  apiUrl: 'https://selfball-1015f6c9c333.herokuapp.com/api'
 };
